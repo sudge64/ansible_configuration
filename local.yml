@@ -116,8 +116,6 @@
       group: $USER
 
   - name: flatpak package installs
-    hosts: all
-    become: true
     gather_facts: false
     tasks:
       - name: flatpak present
