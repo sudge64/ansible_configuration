@@ -130,6 +130,13 @@
       owner: $USER
       group: $USER
 
+  - name: copy .p10k.zsh file
+    copy:
+      src: files/.p10k.zsh
+      dest: ~/$USER/.p10k.zsh
+      owner: $USER
+      group: $USER
+
   - name: flatpak package installs
     hosts: all
     become: true
@@ -254,3 +261,10 @@
       value: font-antialiasing='grayscale'
       value: font-hinting='slight'
       value: toolkit-accessibility=false
+
+  - name: set keyboard shortcuts
+    become_user: $USER
+    dconf:
+      key: org/gnome/settings-daemon/plugins/media-keys 
+      value: email=['<Super>f']
+      value: home=['<Super>e']
