@@ -1,0 +1,256 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  pre_tasks:
+    - name: Update package manager cache
+      tags: always
+      apt: update_cache=yes
+      changed_when: false
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
+  tasks:
+  - name: install terminal packages
+    package: 
+      name: 
+        - htop
+        - cmatix
+        - figlet
+        - cowsay
+        - neofetch
+        - python3-psutil
+        - zsh
+        - cifs-utils
+        - smbclient 
+        - samba-common 
+#        - zsh-syntax-highlighting
+#        - zsh-autosuggestions 
+
+#  tasks:
+  - name: install graphical packages
+    package: 
+      name: 
+        - alacritty
+        - syncthing
+        - steam
+        - stacer
+        - code
+        - cura
+
+#  tasks:
+  - name: install libreoffice packages
+    package: 
+      name: libreoffice
+      state: present
+
+  tasks:
+  - name: install MangoHud from GitHub, manually
+    package:
+      name:
+        - meson
+        - ninja-build
+        - glslang-tools
+        - libx11-dev
+    ansible.builtin.shell:
+      cmd: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git
+      chdir: MangoHud
+      cmd: meson build && ninja -C build install
+      chdir: cd ..
+    owner: root
+    group: root
+
+#  tasks:
+  - name: install zsh-syntax-highlighting from GitHub, manually
+    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    owner: root
+    group: root
+
+#  tasks:
+  - name: install zsh-autosuggestions from GitHub, manually
+    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    owner: root
+    group: root
+
+#  tasks:
+  - name: ensure fonts directory
+    file:
+      path: "{{ lookup('env', 'HOME') }}/.fonts"
+      state: directory
+
+  - name: Meslo exists
+    shell: "ls {{ lookup('env', 'HOME') }}/.fonts/Meslo*Nerd*Font*Complete*"
+    register: meslo_exists
+    ignore_errors: yes
+
+  - name: Download Meslo
+    when: meslo_exists is failed
+    ansible.builtin.unarchive:
+      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+      dest: "{{ lookup('env', 'HOME') }}/.fonts/"
+      remote_src: yes
+
+#  tasks:
+  - name: copy alacritty.yml
+    copy:
+      src: files/alacritty.yml
+      dest: ~/$USER/.config/alacritty
+      owner: root
+      group: root
+
+  - name: copy MangoHud.conf
+    copy:
+      src: files/MangoHud.conf
+      dest: ~/$USER/.config/MangoHud/MangoHud.conf
+      owner: root
+      group: root
+
+#  - name: copy wallpaper file
+#    copy:
+#      src: files/wallpaper.png
+#      dest: /usr/share/backgrounds/ansible-wallpaper.png
+#      owner: root
+#      group: root
+
+#  - name: set favorite apps
+#    become_user: $USER
+#    dconf:
+#      key: "/org/gnome/shell"
+#      value: "favorite-apps=['pop-cosmic-launcher.desktop', 'pop-cosmic-workspaces.desktop', 'pop-cosmic-applications.desktop', 'com.alacritty.Alacritty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'vlc.desktop', 'org.mozilla.Thunderbird.desktop', 'code.desktop', 'steam.desktop', 'virt-manager.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop']"
+
+#  - name: set wallpaper position
+#    become_user: $USER
+#    dconf:
+#      key: "/org/gnome/desktop/background/picture-options"
+#      value: "'zoom'"
+
+  - name: copy .zshrc file
+    copy:
+      src: files/.zshrc
+      dest: ~/$USER/.zshrc
+      owner: $USER
+      group: $USER
+
+  - name: flatpak package installs
+    hosts: all
+    become: true
+    gather_facts: false
+    tasks:
+      - name: flatpak present
+        ansible.builtin.apt:
+          name: flatpak
+          state: present
+
+      - name: flathub flatpak repo
+        community.general.flatpak_remote:
+          name: flathub
+          state: present
+          flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          method: system
+
+      - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
+        community.general.flatpak:
+          name: 
+            - org.blender.Blender
+            - org.audacityteam.Audacity
+            - org.freac.freac
+            - org.gimp.GIMP
+            - org.inkscape.Inkscape
+            - fr.handbrake.ghb
+            - com.obsproject.Studio
+            - com.orama_interactive.Pixelorama
+            - org.kde.krita
+          state: present
+          method: system
+
+      - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
+        community.general.flatpak:
+          name: 
+            - com.usebottles.Bottles
+            - com.github.tchx84.Flatseal
+            - com.mattjakeman.ExtensionManager
+            - org.godotengine.Godot
+            - org.mozilla.Thunderbird
+          state: present
+          method: system
+
+      - name: install CAD flatpaks (FreeCAD, KiCad, OpenSCAD)
+        community.general.flatpak:
+          name: 
+            - org.freecadweb.FreeCAD
+            - org.kicad.KiCad
+            - org.openscad.OpenSCAD
+          state: present
+          method: system
+
+      - name: install funtime flatpaks (Dolphin, Citra, PCSX2, RetroArch)
+        community.general.flatpak:
+          name: 
+            - net.pcsx2.PCSX2
+            - org.DolphinEmu.dolphin-emu
+            - org.citra_emu.citra
+            - org.libretro.RetroArch
+          state: present
+          method: system
+
+  - name: Change shell to zsh
+    ansible.builtin.shell:
+      cmd: touch "$HOME/.cache/zshhistory"
+      cmd: #-- Setup Alias in $HOME/zsh/aliasrc
+      cmd: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+#      cmd: echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    owner: root
+    group: root 
+
+  - name: Enable nala as alternative to apt
+    ansible.builtin.shell:
+      cmd: echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+      cmd: wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
+      cmd: apt update && apt install nala
+      cmd: nala fetch
+      cmd: 1 2 3
+      cmd: Y
+    owner: root
+    group: root 
+
+  - name: set favorite apps
+    become_user: $USER
+    dconf:
+      key: "/org/gnome/shell"
+      value: "favorite-apps=['pop-cosmic-launcher.desktop', 'pop-cosmic-workspaces.desktop', 'pop-cosmic-applications.desktop', 'com.alacritty.Alacritty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'vlc.desktop', 'org.mozilla.Thunderbird.desktop', 'code.desktop', 'steam.desktop', 'virt-manager.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop']"
+
+  - name: set dash-to-dock preferences
+    become_user: $USER
+    dconf:
+      key: "org/gnome/shell/extensions/dash-to-dock"
+      value: click-action='minimize-or-previews'
+      value: dock-fixed=false
+      value: dock-position='LEFT'
+      value: extend-height=false
+      value: hide=false
+      value: manualhide=false
+
+  - name: set pop-cosmic workspace preference
+    become_user: $USER
+    dconf:
+      key: "org/gnome/shell/extensions/pop-cosmic"
+      value: workspace-picker-left=false
+
+  - name: set desktop do not disturb
+    become_user: $USER
+    dconf:
+      key: "org/gnome/desktop/notifications"
+      value: application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty']
+      value: show-banners=false
+
+  - name: set desktop preferences
+    become_user: $USER
+    dconf:
+      key: "org/gnome/desktop/interface"
+      value: clock-show-seconds=false
+      value: clock-show-weekday=true
+      value: color-scheme='prefer-dark'
+      value: enable-animations=false
+      value: enable-hot-corners=true
+      value: font-antialiasing='grayscale'
+      value: font-hinting='slight'
+      value: toolkit-accessibility=false
