@@ -119,9 +119,10 @@
 #    gather_facts: false
     tasks:
       - name: flatpak present
-        ansible.builtin.apt:
-          name: flatpak
-          state: present
+        package:
+        name:
+          - flatpak
+        state: present
 
       - name: flathub flatpak repo
         community.general.flatpak_remote:
