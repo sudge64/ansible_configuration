@@ -117,7 +117,7 @@
 
   - name: flatpak package installs
 #    gather_facts: false
-    tasks:
+#    tasks:
       - name: flatpak present
         package:
         name:
