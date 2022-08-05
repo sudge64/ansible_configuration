@@ -52,26 +52,19 @@
         - glslang-tools
         - libx11-dev
       state: present
-    owner: root
-    group: root
 
 #  tasks:
   - name: install MangoHud from GitHub, manually
     ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
-    owner: root
-    group: root
 
 #  tasks:
   - name: install zsh-syntax-highlighting from GitHub, manually
     ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-    owner: root
-    group: root
 
 #  tasks:
   - name: install zsh-autosuggestions from GitHub, manually
     ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-    owner: root
-    group: root
+
 
 #  tasks:
   - name: ensure fonts directory
@@ -96,15 +89,15 @@
     copy:
       src: files/alacritty.yml
       dest: ~/.config/alacritty
-      owner: root
-      group: root
+      owner: $USER
+      group: $USER
 
   - name: copy MangoHud.conf
     copy:
       src: files/MangoHud.conf
       dest: ~/.config/MangoHud/MangoHud.conf
-      owner: root
-      group: root
+      owner: $USER
+      group: $USER
 
   - name: copy .zshrc file
     copy:
@@ -193,13 +186,9 @@
 
   - name: Change shell to zsh
     ansible.builtin.shell: touch "$HOME/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-    owner: root
-    group: root 
 
   - name: Enable nala as alternative to apt (do nala fetch manually!)
     ansible.builtin.shell: echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list && wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg && apt update && apt install nala
-    owner: root
-    group: root 
 
   - name: set favorite apps
     become_user: $USER
