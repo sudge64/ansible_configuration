@@ -22,7 +22,8 @@
         - python3-psutil
         - zsh
 #        - zsh-syntax-highlighting
-#        - zsh-autosuggestions 
+#        - zsh-autosuggestions
+      state: present
 
 #  tasks:
   - name: install graphical packages
@@ -34,6 +35,7 @@
         - stacer
         - code
         - cura
+      state: present
 
 #  tasks:
   - name: install libreoffice packages
@@ -49,6 +51,7 @@
         - ninja-build
         - glslang-tools
         - libx11-dev
+      state: present
     ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
     owner: root
     group: root
