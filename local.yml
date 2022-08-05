@@ -242,3 +242,10 @@
       key: org/gnome/settings-daemon/plugins/media-keys 
       value: "'email=['<Super>f']'"
       value: "'home=['<Super>e']'"
+
+  - name: set program menu preferences
+    become_user: $USER
+    dconf:
+      key: org/gnome/desktop/wm/preferences
+      value: "'button-layout='appmenu:minimize,maximize,close''"
+      value: "'home=['<Super>e']'"
