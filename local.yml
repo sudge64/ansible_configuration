@@ -44,7 +44,7 @@
       state: present
 
 #  tasks:
-  - name: install MangoHud from GitHub, manually
+  - name: install MangoHud dependancies
     package:
       name:
         - meson
@@ -52,6 +52,11 @@
         - glslang-tools
         - libx11-dev
       state: present
+    owner: root
+    group: root
+
+#  tasks:
+  - name: install MangoHud from GitHub, manually
     ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
     owner: root
     group: root
