@@ -2,6 +2,7 @@
 - hosts: localhost
   connection: local
   become: true
+
   pre_tasks:
     - name: Update package manager cache
       tags: always
@@ -20,9 +21,6 @@
         - neofetch
         - python3-psutil
         - zsh
-        - cifs-utils
-        - smbclient 
-        - samba-common 
 #        - zsh-syntax-highlighting
 #        - zsh-autosuggestions 
 
@@ -43,7 +41,7 @@
       name: libreoffice
       state: present
 
-  tasks:
+#  tasks:
   - name: install MangoHud from GitHub, manually
     package:
       name:
@@ -51,11 +49,7 @@
         - ninja-build
         - glslang-tools
         - libx11-dev
-    ansible.builtin.shell:
-      cmd: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git
-      chdir: MangoHud
-      cmd: meson build && ninja -C build install
-      chdir: ~
+    ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
     owner: root
     group: root
 
@@ -103,25 +97,6 @@
       dest: ~/.config/MangoHud/MangoHud.conf
       owner: root
       group: root
-
-#  - name: copy wallpaper file
-#    copy:
-#      src: files/wallpaper.png
-#      dest: /usr/share/backgrounds/ansible-wallpaper.png
-#      owner: root
-#      group: root
-
-#  - name: set favorite apps
-#    become_user: $USER
-#    dconf:
-#      key: "/org/gnome/shell"
-#      value: "favorite-apps=['pop-cosmic-launcher.desktop', 'pop-cosmic-workspaces.desktop', 'pop-cosmic-applications.desktop', 'com.alacritty.Alacritty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'vlc.desktop', 'org.mozilla.Thunderbird.desktop', 'code.desktop', 'steam.desktop', 'virt-manager.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop']"
-
-#  - name: set wallpaper position
-#    become_user: $USER
-#    dconf:
-#      key: "/org/gnome/desktop/background/picture-options"
-#      value: "'zoom'"
 
   - name: copy .zshrc file
     copy:
@@ -199,23 +174,22 @@
           state: present
           method: system
 
+#  - name: Change shell to zsh
+#    ansible.builtin.shell:
+#      cmd: touch "$HOME/.cache/zshhistory"
+#      #-- Setup Alias in $HOME/zsh/aliasrc
+#      cmd: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+##      cmd: echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+#    owner: root
+#    group: root 
+
   - name: Change shell to zsh
-    ansible.builtin.shell:
-      cmd: touch "$HOME/.cache/zshhistory"
-      #-- Setup Alias in $HOME/zsh/aliasrc
-      cmd: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-#      cmd: echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    ansible.builtin.shell: touch "$HOME/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
     owner: root
     group: root 
 
-  - name: Enable nala as alternative to apt
-    ansible.builtin.shell:
-      cmd: echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
-      cmd: wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
-      cmd: apt update && apt install nala
-      cmd: nala fetch
-      cmd: 1 2 3
-      cmd: Y
+  - name: Enable nala as alternative to apt (do nala fetch manually!)
+    ansible.builtin.shell: echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list && wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg && apt update && apt install nala
     owner: root
     group: root 
 
