@@ -117,64 +117,64 @@
 
   - name: flatpak package installs
 #    gather_facts: false
-    tasks:
-      - name: flatpak present
-        package:
-        name:
-          - flatpak
+#    tasks:
+    - name: flatpak present
+      package:
+      name:
+        - flatpak
+      state: present
+
+    - name: flathub flatpak repo
+      community.general.flatpak_remote:
+        name: flathub
         state: present
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        method: system
 
-      - name: flathub flatpak repo
-        community.general.flatpak_remote:
-          name: flathub
-          state: present
-          flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-          method: system
+    - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
+      community.general.flatpak:
+        name: 
+          - org.blender.Blender
+          - org.audacityteam.Audacity
+          - org.freac.freac
+          - org.gimp.GIMP
+          - org.inkscape.Inkscape
+          - fr.handbrake.ghb
+          - com.obsproject.Studio
+          - com.orama_interactive.Pixelorama
+          - org.kde.krita
+        state: present
+        method: system
 
-      - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
-        community.general.flatpak:
-          name: 
-            - org.blender.Blender
-            - org.audacityteam.Audacity
-            - org.freac.freac
-            - org.gimp.GIMP
-            - org.inkscape.Inkscape
-            - fr.handbrake.ghb
-            - com.obsproject.Studio
-            - com.orama_interactive.Pixelorama
-            - org.kde.krita
-          state: present
-          method: system
+    - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
+      community.general.flatpak:
+        name: 
+          - com.usebottles.Bottles
+          - com.github.tchx84.Flatseal
+          - com.mattjakeman.ExtensionManager
+          - org.godotengine.Godot
+          - org.mozilla.Thunderbird
+        state: present
+        method: system
 
-      - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
-        community.general.flatpak:
-          name: 
-            - com.usebottles.Bottles
-            - com.github.tchx84.Flatseal
-            - com.mattjakeman.ExtensionManager
-            - org.godotengine.Godot
-            - org.mozilla.Thunderbird
-          state: present
-          method: system
+    - name: install CAD flatpaks (FreeCAD, KiCad, OpenSCAD)
+      community.general.flatpak:
+        name: 
+          - org.freecadweb.FreeCAD
+          - org.kicad.KiCad
+          - org.openscad.OpenSCAD
+        state: present
+        method: system
 
-      - name: install CAD flatpaks (FreeCAD, KiCad, OpenSCAD)
-        community.general.flatpak:
-          name: 
-            - org.freecadweb.FreeCAD
-            - org.kicad.KiCad
-            - org.openscad.OpenSCAD
-          state: present
-          method: system
-
-      - name: install funtime flatpaks (Dolphin, Citra, PCSX2, RetroArch)
-        community.general.flatpak:
-          name: 
-            - net.pcsx2.PCSX2
-            - org.DolphinEmu.dolphin-emu
-            - org.citra_emu.citra
-            - org.libretro.RetroArch
-          state: present
-          method: system
+    - name: install funtime flatpaks (Dolphin, Citra, PCSX2, RetroArch)
+      community.general.flatpak:
+        name: 
+          - net.pcsx2.PCSX2
+          - org.DolphinEmu.dolphin-emu
+          - org.citra_emu.citra
+          - org.libretro.RetroArch
+        state: present
+        method: system
 
 #  - name: Change shell to zsh
 #    ansible.builtin.shell:
