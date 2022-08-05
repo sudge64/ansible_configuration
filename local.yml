@@ -120,9 +120,9 @@
 #    tasks:
     - name: flatpak present
       package:
-      name:
-        - flatpak
-      state: present
+        name:
+          - flatpak
+        state: present
 
     - name: flathub flatpak repo
       community.general.flatpak_remote:
