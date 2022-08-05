@@ -116,7 +116,7 @@
       group: $USER
 
   - name: flatpak package installs
-    gather_facts: false
+#    gather_facts: false
     tasks:
       - name: flatpak present
         ansible.builtin.apt:
