@@ -249,3 +249,23 @@
       key: org/gnome/desktop/wm/preferences
       value: "'button-layout='appmenu:minimize,maximize,close''"
       value: "'home=['<Super>e']'"
+
+  - name: add ansible user
+    user:
+      name: ansible_user
+      system: yes
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_ansible_user
+      dest: /etc/sudoers.d/ansible_user
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: ansible_user
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/sudge64/ansible_configuration.git
