@@ -55,7 +55,7 @@
       cmd: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git
       chdir: MangoHud
       cmd: meson build && ninja -C build install
-      chdir: cd ..
+      chdir: ~
     owner: root
     group: root
 
@@ -93,14 +93,14 @@
   - name: copy alacritty.yml
     copy:
       src: files/alacritty.yml
-      dest: ~/$USER/.config/alacritty
+      dest: ~/.config/alacritty
       owner: root
       group: root
 
   - name: copy MangoHud.conf
     copy:
       src: files/MangoHud.conf
-      dest: ~/$USER/.config/MangoHud/MangoHud.conf
+      dest: ~/.config/MangoHud/MangoHud.conf
       owner: root
       group: root
 
@@ -126,14 +126,14 @@
   - name: copy .zshrc file
     copy:
       src: files/.zshrc
-      dest: ~/$USER/.zshrc
+      dest: ~/.zshrc
       owner: $USER
       group: $USER
 
   - name: copy .p10k.zsh file
     copy:
       src: files/.p10k.zsh
-      dest: ~/$USER/.p10k.zsh
+      dest: ~/.p10k.zsh
       owner: $USER
       group: $USER
 
@@ -202,7 +202,7 @@
   - name: Change shell to zsh
     ansible.builtin.shell:
       cmd: touch "$HOME/.cache/zshhistory"
-      cmd: #-- Setup Alias in $HOME/zsh/aliasrc
+      #-- Setup Alias in $HOME/zsh/aliasrc
       cmd: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 #      cmd: echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
     owner: root
@@ -222,7 +222,7 @@
   - name: set favorite apps
     become_user: $USER
     dconf:
-      key: "/org/gnome/shell"
+      key: "org/gnome/shell"
       value: "favorite-apps=['pop-cosmic-launcher.desktop', 'pop-cosmic-workspaces.desktop', 'pop-cosmic-applications.desktop', 'com.alacritty.Alacritty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'vlc.desktop', 'org.mozilla.Thunderbird.desktop', 'code.desktop', 'steam.desktop', 'virt-manager.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop']"
 
   - name: set dash-to-dock preferences
