@@ -20,6 +20,7 @@
         - cowsay
         - neofetch
         - python3-psutil
+        - python3-pip
         - zsh
 #        - zsh-syntax-highlighting
 #        - zsh-autosuggestions
@@ -59,7 +60,10 @@
         - glslang-tools
         - libx11-dev
       state: present
-#      ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
+      ansible.builtin.shell: pip3 install mako
+
+  - name: Fix broken installs
+    ansible.builtin.shell: sudo apt --fix-broken install
 
 #  tasks:
   - name: install MangoHud from GitHub, manually, 2
