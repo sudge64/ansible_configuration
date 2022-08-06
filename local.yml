@@ -60,7 +60,7 @@
         - glslang-tools
         - libx11-dev
       state: present
-      ansible.builtin.shell: pip3 install mako
+    ansible.builtin.shell: pip3 install mako
 
   - name: Fix broken installs
     ansible.builtin.shell: sudo apt --fix-broken install
