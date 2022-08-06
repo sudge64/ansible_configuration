@@ -104,6 +104,7 @@
         - ninja-build
         - glslang-tools
         - libx11-dev
+        - cmake
       state: present
 
   - name: Fix broken installs
