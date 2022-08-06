@@ -15,7 +15,7 @@
     package: 
       name: 
         - htop
-        - cmatix
+        - cmatrix
         - figlet
         - cowsay
         - neofetch
