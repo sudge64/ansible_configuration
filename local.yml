@@ -43,12 +43,11 @@
       name: libreoffice
       state: present
 
-  - name: install yacreader (xUbuntu 22.04)
-    ansible.builtin.shell: echo 'deb http://download.opensuse.org/repositories/home:/selmf/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:selmf.list && curl -fsSL https://download.opensuse.org/repositories/home:selmf/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_selmf.gpg > /dev/null && sudo apt update -y && sudo apt install yacreader -y
-    state: present
+#  - name: install yacreader (xUbuntu 22.04)
+#    ansible.builtin.shell: echo 'deb http://download.opensuse.org/repositories/home:/selmf/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:selmf.list && curl -fsSL https://download.opensuse.org/repositories/home:selmf/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_selmf.gpg > /dev/null && sudo apt update -y && sudo apt install yacreader -y
 
-  - name: install discord .deb package
-    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
+#  - name: install discord .deb package
+#    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
 
 #  tasks:
 #  - name: install MangoHud dependancies
