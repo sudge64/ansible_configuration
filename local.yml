@@ -60,8 +60,6 @@
         - libx11-dev
       state: present
       ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
-      args:
-        executable: /bin/bash
 
 #  tasks:
 #  - name: install MangoHud from GitHub, manually
