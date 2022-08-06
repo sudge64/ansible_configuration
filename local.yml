@@ -55,6 +55,7 @@
   - name: Install MangoHud from GitHub, mannually, 1
     package:
       name:
+        - build-essential
         - meson
         - ninja-build
         - glslang-tools
