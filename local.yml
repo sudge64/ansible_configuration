@@ -42,7 +42,7 @@
 #    become_user: $USER
     community.general.dconf:
       key: "/org/gnome/desktop/interface"
-      value: "['clock-show-seconds=false', 'clock-show-weekday=true", 'color-scheme='prefer-dark'', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing='grayscale'', 'font-hinting='slight'', 'toolkit-accessibility=false']"
+      value: "['clock-show-seconds=false', 'clock-show-weekday=true', 'color-scheme='prefer-dark'', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing='grayscale'', 'font-hinting='slight'', 'toolkit-accessibility=false']"
 
   - name: set keyboard shortcuts
 #    become_user: $USER
