@@ -42,21 +42,13 @@
 #    become_user: $USER
     dconf:
       key: "/org/gnome/desktop/interface"
-      value: "clock-show-seconds=false"
-      value: "clock-show-weekday=true"
-      value: "color-scheme='prefer-dark'"
-      value: "enable-animations=false"
-      value: "enable-hot-corners=true"
-      value: "font-antialiasing='grayscale'"
-      value: "font-hinting='slight'"
-      value: "toolkit-accessibility=false"
+      value: "['clock-show-seconds=false', 'clock-show-weekday=true", 'color-scheme='prefer-dark'', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing='grayscale'', 'font-hinting='slight'', 'toolkit-accessibility=false']"
 
   - name: set keyboard shortcuts
 #    become_user: $USER
     dconf:
       key: "/org/gnome/settings-daemon/plugins/media-keys"
-      value: "email=['<Super>f']"
-      value: "home=['<Super>e']"
+      value: "['email=['<Super>f']', 'home=['<Super>e']']"
 
   - name: set program menu preferences
 #    become_user: $USER
@@ -254,8 +246,7 @@
 #    become_user: $USER
     dconf:
       key: "/org/gnome/desktop/notifications"
-      value: "'application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty']'"
-      value: "'show-banners=false'"
+      value: "['application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty']', 'value: 'show-banners=false']"
 
   - name: add ansible user
     user:
