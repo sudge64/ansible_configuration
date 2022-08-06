@@ -60,13 +60,15 @@
         - glslang-tools
         - libx11-dev
       state: present
-    ansible.builtin.shell: pip3 install mako
 
   - name: Fix broken installs
     ansible.builtin.shell: sudo apt --fix-broken install
 
+  - name: Install MangoHud from GitHub, manually, 2
+    ansible.builtin.shell: pip3 install mako
+
 #  tasks:
-  - name: install MangoHud from GitHub, manually, 2
+  - name: install MangoHud from GitHub, manually, 3
     ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
 
 #  tasks:
