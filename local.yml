@@ -51,7 +51,8 @@
 #    become_user: $USER
     community.general.dconf:
       key: "/org/gnome/settings-daemon/plugins/media-keys"
-      value: "['email=['<Super>f']', 'home=['<Super>e']']"
+#      value: "['email=['<Super>f']', 'home=['<Super>e']']"
+      value: "['email=[<Super>f]', 'home=[<Super>e]']"
 
   - name: set program menu preferences
 #    become_user: $USER
