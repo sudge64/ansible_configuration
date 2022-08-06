@@ -59,7 +59,7 @@
     community.general.dconf:
       key: "/org/gnome/desktop/wm/preferences"
 #      value: "['button-layout='appmenu:minimize,maximize,close'', 'home=['<Super>e']']"
-      value: "['button-layout=appmenu:minimize,maximize,close', 'home=['<Super>e']']"
+      value: "['button-layout=appmenu:minimize,maximize,close', 'home=[<Super>e]']"
 
 #  tasks:
   - name: install graphical packages
