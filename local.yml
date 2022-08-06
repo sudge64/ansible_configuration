@@ -26,6 +26,50 @@
 #        - zsh-autosuggestions
       state: present
 
+  - name: set dash-to-dock preferences
+    become_user: $USER
+    dconf:
+      key: "org/gnome/shell/extensions/dash-to-dock"
+      value: "'click-action='minimize-or-previews''"
+      value: "'dock-fixed=false'"
+      value: "'dock-position='LEFT''"
+      value: "'extend-height=false'"
+      value: "'hide=false'"
+      value: "'manualhide=false'"
+
+  - name: set pop-cosmic workspace preference
+    become_user: $USER
+    dconf:
+      key: "org/gnome/shell/extensions/pop-cosmic"
+      value: "'workspace-picker-left=false'"
+
+  - name: set desktop preferences
+    become_user: $USER
+    dconf:
+      key: "org/gnome/desktop/interface"
+      value: "'clock-show-seconds=false'"
+      value: "'clock-show-weekday=true'"
+      value: "'color-scheme='prefer-dark''"
+      value: "'enable-animations=false'"
+      value: "'enable-hot-corners=true'"
+      value: "'font-antialiasing='grayscale''"
+      value: "'font-hinting='slight''"
+      value: "'toolkit-accessibility=false'"
+
+  - name: set keyboard shortcuts
+    become_user: $USER
+    dconf:
+      key: org/gnome/settings-daemon/plugins/media-keys 
+      value: "'email=['<Super>f']'"
+      value: "'home=['<Super>e']'"
+
+  - name: set program menu preferences
+    become_user: $USER
+    dconf:
+      key: org/gnome/desktop/wm/preferences
+      value: "'button-layout='appmenu:minimize,maximize,close''"
+      value: "'home=['<Super>e']'"
+
 #  tasks:
   - name: install graphical packages
     package: 
@@ -210,56 +254,12 @@
       key: "org/gnome/shell"
       value: "'favorite-apps=['pop-cosmic-launcher.desktop', 'pop-cosmic-workspaces.desktop', 'pop-cosmic-applications.desktop', 'com.alacritty.Alacritty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'vlc.desktop', 'org.mozilla.Thunderbird.desktop', 'code.desktop', 'steam.desktop', 'virt-manager.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop']'"
 
-  - name: set dash-to-dock preferences
-    become_user: $USER
-    dconf:
-      key: "org/gnome/shell/extensions/dash-to-dock"
-      value: "'click-action='minimize-or-previews''"
-      value: "'dock-fixed=false'"
-      value: "'dock-position='LEFT''"
-      value: "'extend-height=false'"
-      value: "'hide=false'"
-      value: "'manualhide=false'"
-
-  - name: set pop-cosmic workspace preference
-    become_user: $USER
-    dconf:
-      key: "org/gnome/shell/extensions/pop-cosmic"
-      value: "'workspace-picker-left=false'"
-
   - name: set desktop do not disturb
     become_user: $USER
     dconf:
       key: "org/gnome/desktop/notifications"
       value: "'application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty']'"
       value: "'show-banners=false'"
-
-  - name: set desktop preferences
-    become_user: $USER
-    dconf:
-      key: "org/gnome/desktop/interface"
-      value: "'clock-show-seconds=false'"
-      value: "'clock-show-weekday=true'"
-      value: "'color-scheme='prefer-dark''"
-      value: "'enable-animations=false'"
-      value: "'enable-hot-corners=true'"
-      value: "'font-antialiasing='grayscale''"
-      value: "'font-hinting='slight''"
-      value: "'toolkit-accessibility=false'"
-
-  - name: set keyboard shortcuts
-    become_user: $USER
-    dconf:
-      key: org/gnome/settings-daemon/plugins/media-keys 
-      value: "'email=['<Super>f']'"
-      value: "'home=['<Super>e']'"
-
-  - name: set program menu preferences
-    become_user: $USER
-    dconf:
-      key: org/gnome/desktop/wm/preferences
-      value: "'button-layout='appmenu:minimize,maximize,close''"
-      value: "'home=['<Super>e']'"
 
   - name: add ansible user
     user:
