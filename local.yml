@@ -30,12 +30,7 @@
 #    become_user: $USER
     dconf:
       key: "/org/gnome/shell/extensions/dash-to-dock"
-      value: "click-action='minimize-or-previews'"
-      value: "dock-fixed=false"
-      value: "dock-position='LEFT'"
-      value: "extend-height=false"
-      value: "hide=false"
-      value: "manualhide=false"
+      value: "['click-action='minimize-or-previews'', 'dock-fixed=false', 'dock-position='LEFT'', 'extend-height=false', 'hide=false', 'manualhide=false']"
 
   - name: set pop-cosmic workspace preference
 #    become_user: $USER
