@@ -27,7 +27,7 @@
       state: present
 
   - name: set dash-to-dock preferences
-    become_user: testing
+#    become_user: $USER
     dconf:
       key: "/org/gnome/shell/extensions/dash-to-dock"
       value: "click-action='minimize-or-previews'"
