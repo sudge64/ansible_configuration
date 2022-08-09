@@ -106,7 +106,7 @@
 
 #  tasks:
   - name: install MangoHud from GitHub, manually, 3
-    ansible.builtin.shell: git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
+    ansible.builtin.shell: sudo rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
 
 #  tasks:
   - name: install zsh-syntax-highlighting from GitHub, manually
