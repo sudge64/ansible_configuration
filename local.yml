@@ -9,6 +9,7 @@
       apt: update_cache=yes
       changed_when: false
       when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+      become: true
 
   tasks:
   - name: install terminal packages
@@ -25,7 +26,7 @@
       state: present
 
   - name: set dash-to-dock preferences
-#    become_user: $USER
+    become_user: testing
     community.general.dconf:
       key: "/org/gnome/shell/extensions/dash-to-dock"
       value: "['click-action=minimize-or-previews', 'dock-fixed=false', 'dock-position=LEFT', 'extend-height=false', 'hide=false', 'manualhide=false']"
@@ -33,27 +34,27 @@
 #      value: "['dock-fixed=false', 'extend-height=false', 'hide=false', 'manualhide=false']"
 
   - name: set pop-cosmic workspace preference
-#    become_user: $USER
+    become_user: testing
     community.general.dconf:
       key: "/org/gnome/shell/extensions/pop-cosmic"
       value: "'workspace-picker-left=false'"
 
   - name: set desktop preferences
-#    become_user: $USER
+    become_user: testing
     community.general.dconf:
       key: "/org/gnome/desktop/interface"
 #      value: "['clock-show-seconds=false', 'clock-show-weekday=true', 'color-scheme='prefer-dark'', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing='grayscale'', 'font-hinting='slight'', 'toolkit-accessibility=false']"
       value: "['clock-show-seconds=false', 'clock-show-weekday=true', 'color-scheme=prefer-dark', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing=grayscale', 'font-hinting=slight', 'toolkit-accessibility=false']"
 
   - name: set keyboard shortcuts
-#    become_user: $USER
+    become_user: testing
     community.general.dconf:
       key: "/org/gnome/settings-daemon/plugins/media-keys"
 #      value: "['email=['<Super>f']', 'home=['<Super>e']']"
       value: "['email=[<Super>f]', 'home=[<Super>e]']"
 
   - name: set program menu preferences
-#    become_user: $USER
+    become_user: testing
     community.general.dconf:
       key: "/org/gnome/desktop/wm/preferences"
 #      value: "['button-layout='appmenu:minimize,maximize,close'', 'home=['<Super>e']']"
@@ -82,14 +83,17 @@
 
 #  tasks:
   - name: install MangoHud from GitHub, manually, 3
+    become_user: testing
     ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
 
 #  tasks:
   - name: install zsh-syntax-highlighting from GitHub, manually
+    become_user: testing
     ansible.builtin.shell: rm -rf zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 #  tasks:
   - name: install zsh-autosuggestions from GitHub, manually
+    become_user: testing
     ansible.builtin.shell: rm -rf zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 #  tasks:
@@ -118,16 +122,19 @@
 
 #  tasks:
   - name: ensure fonts directory
+    become_user: testing
     file:
       path: "{{ lookup('env', 'HOME') }}/.fonts"
       state: directory
 
   - name: Meslo exists
+    become_user: testing
     shell: "ls {{ lookup('env', 'HOME') }}/.fonts/Meslo*Nerd*Font*Complete*"
     register: meslo_exists
     ignore_errors: yes
 
   - name: Download Meslo
+    become_user: testing
     when: meslo_exists is failed
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
@@ -138,30 +145,30 @@
   - name: copy alacritty.yml
     copy:
       src: files/alacritty.yml
-      dest: $HOME/.config/alacritty
-      owner: $USER
-      group: $USER
+      dest: ~/.config/alacritty
+      owner: testing
+      group: testing
 
   - name: copy MangoHud.conf
     copy:
       src: files/MangoHud.conf
-      dest: $HOME/.config/MangoHud/MangoHud.conf
-      owner: $USER
-      group: $USER
+      dest: ~/.config/MangoHud/MangoHud.conf
+      owner: testing
+      group: testing
 
   - name: copy .zshrc file
     copy:
       src: files/.zshrc
-      dest: $HOME/.zshrc
+      dest: ~/.zshrc
       owner: $USER
       group: $USER
 
   - name: copy .p10k.zsh file
     copy:
       src: files/.p10k.zsh
-      dest: $HOME/.p10k.zsh
-      owner: $USER
-      group: $USER
+      dest: ~/.p10k.zsh
+      owner: testing
+      group: testing
 
 #  - name: flatpak package installs
 #    gather_facts: false
