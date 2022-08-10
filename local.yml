@@ -22,8 +22,6 @@
         - python3-psutil
         - python3-pip
         - zsh
-#        - zsh-syntax-highlighting
-#        - zsh-autosuggestions
       state: present
 
   - name: set dash-to-dock preferences
@@ -77,7 +75,7 @@
       state: present
 
   - name: Fix broken installs
-    ansible.builtin.shell: sudo apt --fix-broken install
+    ansible.builtin.shell: apt --fix-broken install
 
   - name: Install MangoHud from GitHub, manually, 2
     ansible.builtin.shell: pip3 install mako
@@ -140,28 +138,28 @@
   - name: copy alacritty.yml
     copy:
       src: files/alacritty.yml
-      dest: ~/.config/alacritty
+      dest: $HOME/.config/alacritty
       owner: $USER
       group: $USER
 
   - name: copy MangoHud.conf
     copy:
       src: files/MangoHud.conf
-      dest: ~/.config/MangoHud/MangoHud.conf
+      dest: $HOME/.config/MangoHud/MangoHud.conf
       owner: $USER
       group: $USER
 
   - name: copy .zshrc file
     copy:
       src: files/.zshrc
-      dest: ~/.zshrc
+      dest: $HOME/.zshrc
       owner: $USER
       group: $USER
 
   - name: copy .p10k.zsh file
     copy:
       src: files/.p10k.zsh
-      dest: ~/.p10k.zsh
+      dest: $HOME/.p10k.zsh
       owner: $USER
       group: $USER
 
