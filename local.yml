@@ -141,7 +141,6 @@
       dest: $HOME/.config/alacritty
       owner: $USER
       group: $USER
-    state: present
 
   - name: copy MangoHud.conf
     copy:
@@ -149,7 +148,6 @@
       dest: $HOME/.config/MangoHud/MangoHud.conf
       owner: $USER
       group: $USER
-    state: present
 
   - name: copy .zshrc file
     copy:
@@ -157,7 +155,6 @@
       dest: $HOME/.zshrc
       owner: $USER
       group: $USER
-    state: present
 
   - name: copy .p10k.zsh file
     copy:
@@ -165,7 +162,6 @@
       dest: $HOME/.p10k.zsh
       owner: $USER
       group: $USER
-    state: present
 
 #  - name: flatpak package installs
 #    gather_facts: false
