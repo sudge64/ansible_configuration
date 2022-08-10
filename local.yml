@@ -79,18 +79,22 @@
 
   - name: Install MangoHud from GitHub, manually, 2
     ansible.builtin.shell: pip3 install mako
+    state: present
 
 #  tasks:
   - name: install MangoHud from GitHub, manually, 3
-    ansible.builtin.shell: sudo rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
+    ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
+    state: present
 
 #  tasks:
   - name: install zsh-syntax-highlighting from GitHub, manually
     ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    state: present
 
 #  tasks:
   - name: install zsh-autosuggestions from GitHub, manually
     ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    state: present
 
 #  tasks:
   - name: install graphical packages
@@ -141,6 +145,7 @@
       dest: $HOME/.config/alacritty
       owner: $USER
       group: $USER
+    state: present
 
   - name: copy MangoHud.conf
     copy:
@@ -148,6 +153,7 @@
       dest: $HOME/.config/MangoHud/MangoHud.conf
       owner: $USER
       group: $USER
+    state: present
 
   - name: copy .zshrc file
     copy:
@@ -155,6 +161,7 @@
       dest: $HOME/.zshrc
       owner: $USER
       group: $USER
+    state: present
 
   - name: copy .p10k.zsh file
     copy:
@@ -162,6 +169,7 @@
       dest: $HOME/.p10k.zsh
       owner: $USER
       group: $USER
+    state: present
 
 #  - name: flatpak package installs
 #    gather_facts: false
