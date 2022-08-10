@@ -62,6 +62,38 @@
       value: "['button-layout=appmenu:minimize,maximize,close', 'home=[<Super>e]']"
 
 #  tasks:
+#  - name: install MangoHud dependancies
+  - name: Install MangoHud from GitHub, mannually, 1
+    package:
+      name:
+        - build-essential
+        - meson
+        - ninja-build
+        - glslang-tools
+        - libx11-dev
+        - cmake
+        - libdbus-1-dev
+      state: present
+
+  - name: Fix broken installs
+    ansible.builtin.shell: sudo apt --fix-broken install
+
+  - name: Install MangoHud from GitHub, manually, 2
+    ansible.builtin.shell: pip3 install mako
+
+#  tasks:
+  - name: install MangoHud from GitHub, manually, 3
+    ansible.builtin.shell: sudo rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
+
+#  tasks:
+  - name: install zsh-syntax-highlighting from GitHub, manually
+    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+#  tasks:
+  - name: install zsh-autosuggestions from GitHub, manually
+    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+#  tasks:
   - name: install graphical packages
     package: 
       name: 
@@ -84,38 +116,6 @@
 
 #  - name: install discord .deb package
 #    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
-
-#  tasks:
-#  - name: install MangoHud dependancies
-  - name: Install MangoHud from GitHub, mannually, 1
-    package:
-      name:
-        - build-essential
-        - meson
-        - ninja-build
-        - glslang-tools
-        - libx11-dev
-        - cmake
-      state: present
-
-  - name: Fix broken installs
-    ansible.builtin.shell: sudo apt --fix-broken install
-
-  - name: Install MangoHud from GitHub, manually, 2
-    ansible.builtin.shell: pip3 install mako
-
-#  tasks:
-  - name: install MangoHud from GitHub, manually, 3
-    ansible.builtin.shell: sudo rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
-
-#  tasks:
-  - name: install zsh-syntax-highlighting from GitHub, manually
-    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-
-#  tasks:
-  - name: install zsh-autosuggestions from GitHub, manually
-    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-
 
 #  tasks:
   - name: ensure fonts directory
