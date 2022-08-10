@@ -88,13 +88,11 @@
 
 #  tasks:
   - name: install zsh-syntax-highlighting from GitHub, manually
-    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-    state: present
+    ansible.builtin.shell: rm -rf zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 #  tasks:
   - name: install zsh-autosuggestions from GitHub, manually
-    ansible.builtin.shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-    state: present
+    ansible.builtin.shell: rm -rf zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 #  tasks:
   - name: install graphical packages
