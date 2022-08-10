@@ -79,12 +79,10 @@
 
   - name: Install MangoHud from GitHub, manually, 2
     ansible.builtin.shell: pip3 install mako
-    state: present
 
 #  tasks:
   - name: install MangoHud from GitHub, manually, 3
     ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
-    state: present
 
 #  tasks:
   - name: install zsh-syntax-highlighting from GitHub, manually
