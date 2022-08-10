@@ -72,6 +72,7 @@
         - glslang-tools
         - libx11-dev
         - cmake
+        - libxnvctrl-dev
         - libdbus-1-dev
       state: present
 
