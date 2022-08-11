@@ -137,7 +137,7 @@
   - name: copy alacritty.yml
     copy:
       src: files/alacritty.yml
-      dest: /home/testing/.config/alacritty
+      dest: /home/testing/.config/alacritty/alacritty.yml
       owner: testing
       group: testing
 
