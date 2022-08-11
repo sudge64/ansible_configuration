@@ -117,12 +117,12 @@
   - name: ensure fonts directory
     become_user: testing
     file:
-      path: "{{ lookup('env', 'HOME') }}/.fonts"
+      path: "/home/testing/.fonts"
       state: directory
 
   - name: Meslo exists
     become_user: testing
-    shell: "ls {{ lookup('env', 'HOME') }}/.fonts/Meslo*Nerd*Font*Complete*"
+    shell: "/home/testing/.fonts/Meslo*Nerd*Font*Complete*"
     register: meslo_exists
     ignore_errors: yes
 
@@ -131,7 +131,7 @@
     when: meslo_exists is failed
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-      dest: "{{ lookup('env', 'HOME') }}/.fonts/"
+      dest: "/home/testing/.fonts"
       remote_src: yes
 
   - name: copy alacritty.yml
