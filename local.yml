@@ -89,7 +89,7 @@
 
   - name: install zsh-autosuggestions from GitHub, manually
     become_user: testing
-    ansible.builtin.shell: rm -rf zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    ansible.builtin.shell: rm -rf ~/.zsh/zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
   - name: install graphical packages
     package: 
