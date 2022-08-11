@@ -134,8 +134,15 @@
       dest: "/home/testing/.fonts"
       remote_src: yes
 
-  - name: copy alacritty.yml
+  - name: make directory ~/.config/alacritty/
     ansible.builtin.shell: mkdir ~/.config/alacritty/
+    state: present
+
+  - name: make directory ~/.config/MangoHud/
+    ansible.builtin.shell: mkdir ~/.config/MangoHud/
+    state: present
+
+  - name: copy alacritty.yml
     copy:
       src: files/alacritty.yml
       dest: /home/testing/.config/alacritty/alacritty.yml
@@ -143,7 +150,6 @@
       group: testing
 
   - name: copy MangoHud.conf
-    ansible.builtin.shell: mkdir ~/.config/MangoHud/
     copy:
       src: files/MangoHud.conf
       dest: /home/testing/.config/MangoHud/MangoHud.conf
