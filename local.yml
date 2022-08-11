@@ -136,7 +136,6 @@
 
   - name: copy alacritty.yml
     ansible.builtin.shell: mkdir ~/.config/alacritty/
-    state: present
     copy:
       src: files/alacritty.yml
       dest: /home/testing/.config/alacritty/alacritty.yml
@@ -145,7 +144,6 @@
 
   - name: copy MangoHud.conf
     ansible.builtin.shell: mkdir ~/.config/MangoHud/
-    state: present
     copy:
       src: files/MangoHud.conf
       dest: /home/testing/.config/MangoHud/MangoHud.conf
