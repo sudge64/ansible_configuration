@@ -135,11 +135,11 @@
       remote_src: yes
 
   - name: make directory ~/.config/alacritty/
-    ansible.builtin.shell: mkdir ~/.config/alacritty/
+    ansible.builtin.shell: mkdir /home/testing/.config/alacritty/
     state: present
 
   - name: make directory ~/.config/MangoHud/
-    ansible.builtin.shell: mkdir ~/.config/MangoHud/
+    ansible.builtin.shell: mkdir /home/testing/.config/MangoHud/
     state: present
 
   - name: copy alacritty.yml
