@@ -12,10 +12,8 @@ source /home/cjwade/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias update="sudo nala update  && sudo nala upgrade -y && flatpak update -y"
+alias update="sudo apt update  && sudo apt upgrade -y && flatpak update -y"
 alias ll="ls -l"
 alias la="ls -a"
 alias ld="ls -ld"
-#alias apt="nala"
-#alias sudo="sudo "
 export PATH="$HOME/.poetry/bin:$PATH"
