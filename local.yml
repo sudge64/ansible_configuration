@@ -67,7 +67,7 @@
 
   - name: install zsh-syntax-highlighting from GitHub, manually
     become_user: cjwade
-    ansible.builtin.shell: rm -rf zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    ansible.builtin.shell: rm -rf ~/.zsh/zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
   - name: install zsh-autosuggestions from GitHub, manually
     become_user: cjwade
@@ -225,7 +225,7 @@
 
   - name: Install com.usebottles.Bottles as flatpak
     community.general.flatpak:
-      name: com.usebottles.Bottles
+      name: com.usebottles.bottles
       state: present
       method: user
 
@@ -297,7 +297,7 @@
 
   - name: Change shell to zsh
     become_user: cjwade
-    ansible.builtin.shell: touch "$HOME/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    ansible.builtin.shell: touch "~/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 
   - name: add ansible user
     user:
