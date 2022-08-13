@@ -117,12 +117,12 @@
   - name: ensure fonts directory
     become_user: testing
     file:
-      path: "/home/testing/.fonts"
+      path: "/home/testing/.local/share/fonts"
       state: directory
 
   - name: Meslo exists
     become_user: testing
-    shell: "/home/testing/.fonts/Meslo*Nerd*Font*Complete*"
+    shell: "/home/testing/.local/share/fonts/Meslo*Nerd*Font*Complete*"
     register: meslo_exists
     ignore_errors: yes
 
@@ -131,7 +131,7 @@
     when: meslo_exists is failed
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-      dest: "/home/testing/.fonts"
+      dest: "/home/testing/.local/share/fonts"
       remote_src: yes
 
   - name: make directory ~/.config/alacritty/
@@ -171,9 +171,8 @@
       group: testing
 
   - name: flatpak present
-    package:
-      name:
-        - flatpak
+    ansible.builtin.apt:
+      name: flatpak
       state: present
 
   - name: flathub flatpak repo
@@ -183,25 +182,18 @@
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
       method: system
 
-#  - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
-#    community.general.flatpak:
-#      name: 
-#        - org.blender.Blender
-#        - org.audacityteam.Audacity
-#        - org.freac.freac
-#        - org.gimp.GIMP
-#        - org.inkscape.Inkscape
-#        - fr.handbrake.ghb
-#        - com.obsproject.Studio
-#        - com.orama_interactive.Pixelorama
-#        - org.kde.krita
-#      state: present
-#      method: system
-
   - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
-    become_user: testing
     community.general.flatpak:
-      name: ["org.blender.Blender", "org.audacityteam.Audacity", "org.freac.freac", "org.gimp.GIMP", "org.inkscape.Inkscape", "fr.handbrake.ghb", "com.obsproject.Studio", "com.orama_interactive.Pixelorama", "org.kde.krita"]
+      name: 
+        - org.blender.Blender
+        - org.audacityteam.Audacity
+        - org.freac.freac
+        - org.gimp.GIMP
+        - org.inkscape.Inkscape
+        - fr.handbrake.ghb
+        - com.obsproject.Studio
+        - com.orama_interactive.Pixelorama
+        - org.kde.krita
       state: present
       method: system
 
