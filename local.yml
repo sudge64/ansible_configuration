@@ -35,6 +35,12 @@
 
   - name: Load dconf settings from settings.dconf
     #become_user: cjwade
+    ansible.builtin.shell: pwd
+    args:
+      executable: /bin/bash
+
+  - name: Load dconf settings from settings.dconf
+    #become_user: cjwade
     ansible.builtin.shell: dconf load / < settings.dconf
     args:
       executable: /bin/bash
