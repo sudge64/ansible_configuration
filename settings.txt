@@ -7,8 +7,8 @@ window-y=437
 mode='hidpi'
 
 [io/elementary/appcenter/settings]
-cached-drivers=['nvidia-driver-510, (kernel modules provided by nvidia-dkms-510)', 'nvidia-driver-470, (kernel modules provided by nvidia-dkms-470)', 'nvidia-driver-390, (kernel modules provided by nvidia-dkms-390)', 'nvidia-driver-515-server, (kernel modules provided by nvidia-dkms-515-server)', 'nvidia-driver-510-server, (kernel modules provided by nvidia-dkms-510-server)', 'nvidia-driver-450-server, (kernel modules provided by nvidia-dkms-450-server)', 'nvidia-driver-418-server, (kernel modules provided by nvidia-dkms-418-server)', 'nvidia-driver-470-server, (kernel modules provided by nvidia-dkms-470-server)', 'nvidia-driver-515, (kernel modules provided by nvidia-dkms-515)']
-last-refresh-time=int64 1659463343
+cached-drivers=['nvidia-driver-390, (kernel modules provided by nvidia-dkms-390)', 'nvidia-driver-515, (kernel modules provided by nvidia-dkms-515)', 'nvidia-driver-470-server, (kernel modules provided by nvidia-dkms-470-server)', 'nvidia-driver-450-server, (kernel modules provided by nvidia-dkms-450-server)', 'nvidia-driver-470, (kernel modules provided by nvidia-dkms-470)', 'nvidia-driver-515-server, (kernel modules provided by nvidia-dkms-515-server)', 'nvidia-driver-510, (kernel modules provided by nvidia-dkms-510)', 'nvidia-driver-510-server, (kernel modules provided by nvidia-dkms-510-server)', 'nvidia-driver-418-server, (kernel modules provided by nvidia-dkms-418-server)']
+last-refresh-time=int64 1660354797
 window-maximized=true
 window-position=(395, 195)
 window-size=(910, 640)
@@ -37,6 +37,9 @@ window-state=87168
 
 [org/gnome/control-center]
 last-panel='sound'
+
+[org/gnome/desktop]
+interface='workspace-picker-left=false'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Pop-Office', 'Pop-System', 'Pop-Utility', '54e03842-b01f-4720-8657-ce7d31ea5df8', '40177a6c-b3a6-4451-a520-b93b6fbbbbe6', 'b01027d6-a533-4b4a-b3e8-6c2519243da1', '4d2b99fb-b82d-4fea-837c-444dead21163']
@@ -96,7 +99,7 @@ font-hinting='slight'
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty']
+application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty', 'org-freecadweb-freecad']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/com-alacritty-alacritty]
@@ -113,6 +116,9 @@ application-id='gnome-printers-panel.desktop'
 
 [org/gnome/desktop/notifications/application/io-elementary-appcenter]
 application-id='io.elementary.appcenter.desktop'
+
+[org/gnome/desktop/notifications/application/org-freecadweb-freecad]
+application-id='org.freecadweb.FreeCAD.desktop'
 
 [org/gnome/desktop/notifications/application/org-gimp-gimp]
 application-id='org.gimp.GIMP.desktop'
@@ -182,7 +188,7 @@ active-plugins=['spell', 'sort', 'filebrowser', 'modelines', 'docinfo', 'openlin
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/cjwade'
+virtual-root='file:///home/cjwade/Documents/GitHub/ansible_configuration'
 
 [org/gnome/gedit/preferences/ui]
 show-tabs-mode='auto'
@@ -195,7 +201,7 @@ size=(1276, 1361)
 state=87168
 
 [org/gnome/gnome-system-monitor]
-current-tab='resources'
+current-tab='processes'
 maximized=false
 network-total-in-bits=false
 show-dependencies=false
@@ -291,7 +297,7 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(732, 284)
+window-position=(92, 281)
 window-size=(1096, 856)
 
 [org/virt-manager/virt-manager]
@@ -319,13 +325,18 @@ show-toolbar=true
 graphics-type='system'
 
 [org/virt-manager/virt-manager/urls]
-isos=['/var/lib/libvirt/images/Win10_21H1_English_x64.iso', '/var/lib/libvirt/images/virtio-win-0.1.215.iso', '/var/lib/libvirt/images/Win11_English_x64.iso']
+isos=['/var/lib/libvirt/images/pop-os_22.04_amd64_intel_4.iso', '/var/lib/libvirt/images/Win10_21H1_English_x64.iso', '/var/lib/libvirt/images/virtio-win-0.1.215.iso', '/var/lib/libvirt/images/Win11_English_x64.iso']
 
 [org/virt-manager/virt-manager/vmlist-fields]
 disk-usage=false
 network-traffic=false
 
 [org/virt-manager/virt-manager/vms/12aee127d8a5474cb7cb01669cac9b6c]
+autoconnect=1
+scaling=1
+vm-window-size=(1024, 835)
+
+[org/virt-manager/virt-manager/vms/21b232804afa44f7813cd7a0fe2df47b]
 autoconnect=1
 scaling=1
 vm-window-size=(1024, 835)
@@ -354,6 +365,15 @@ vm-window-size=(1920, 1019)
 autoconnect=1
 scaling=1
 vm-window-size=(1920, 1019)
+
+[org/virt-manager/virt-manager/vms/b13298215dfc4ba69de5259fb85854e3]
+autoconnect=1
+scaling=1
+
+[org/virt-manager/virt-manager/vms/b84708006e444310ab720b377faf027b]
+autoconnect=1
+scaling=1
+vm-window-size=(1024, 835)
 
 [org/virt-manager/virt-manager/vms/bbe4ceafb0ff4973933b975aeed0b77a]
 autoconnect=1
