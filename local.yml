@@ -113,13 +113,6 @@
 #  - name: install discord .deb package
 #    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
 
-
-  - name: ensure fonts directory
-    become_user: testing
-    file:
-      path: "/home/testing/.local/share/fonts"
-      state: directory
-
   - name: Meslo exists
     become_user: testing
     shell: "/home/testing/.local/share/fonts/Meslo*Nerd*Font*Complete*"
