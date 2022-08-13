@@ -29,7 +29,7 @@
     become_user: cjwade
     copy:
       src: files/settings.txt
-      dest: ~/settings.txt
+      dest: /home/$USER/settings.txt
       owner: cjwade
       group: cjwade
 
@@ -126,33 +126,30 @@
 #    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
 
   - name: Ensure fonts directory
-    become_user: cjwade
     file:
-      path: "~/local/share/fonts"
+      path: "/home/cjwade/.local/share/fonts"
       state: directory
 
   - name: Meslo exists
-    become_user: cjwade
-    shell: "ls ~/.local/share/fonts/Meslo*"
+    shell: "ls /home/cjwade/.local/share/fonts/Meslo*"
     register: meslo_exists
     ignore_errors: yes
 
   - name: Download Meslo
-    become_user: cjwade
     when: meslo_exists is failed
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-      dest: "~/.local/share/fonts"
+      dest: "/home/cjwade/.local/share/fonts"
       remote_src: yes
 
   - name: make directory ~/.config/alacritty/
     become_user: cjwade
-    ansible.builtin.shell: mkdir ~/.config/alacritty/
+    ansible.builtin.shell: mkdir /home/cjwade/.config/alacritty/
     ignore_errors: yes
 
   - name: make directory ~/.config/MangoHud/
     become_user: cjwade
-    ansible.builtin.shell: mkdir ~/.config/MangoHud/
+    ansible.builtin.shell: mkdir /home/cjwade/.config/MangoHud/
     ignore_errors: yes
 
   - name: copy alacritty.yml
