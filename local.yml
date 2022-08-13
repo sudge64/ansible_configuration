@@ -25,13 +25,13 @@
         - zsh
       state: present
 
-  - name: copy settings.txt to ~/
-    become_user: cjwade
-    copy:
-      src: files/settings.txt
-      dest: /home/$USER/settings.txt
-      owner: cjwade
-      group: cjwade
+#  - name: copy settings.txt to ~/
+#    become_user: cjwade
+#    copy:
+#      src: files/settings.txt
+#      dest: /home/$USER/settings.txt
+#      owner: cjwade
+#      group: cjwade
 
   - name: Load dconf settings from settings.txt
     #become_user: cjwade
