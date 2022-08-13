@@ -25,6 +25,14 @@
         - zsh
       state: present
 
+  - name: copy settings.txt to ~/
+    become_user: cjwade
+    copy:
+      src: files/settings.txt
+      dest: ~/settings.txt
+      owner: cjwade
+      group: cjwade
+
   - name: Load dconf settings from settings.txt
     become_user: cjwade
     ansible.builtin.shell: "dconf load / < settings.txt"
@@ -120,7 +128,7 @@
   - name: Ensure fonts directory
     become_user: cjwade
     file:
-      path: "~/.local/share/fonts"
+      path: "~/local/share/fonts"
       state: directory
 
   - name: Meslo exists
