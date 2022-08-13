@@ -110,6 +110,7 @@
         - stacer
         - code
         - cura
+        - gnome-tweaks
       state: present
 
   - name: install libreoffice packages
