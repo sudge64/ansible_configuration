@@ -25,17 +25,17 @@
         - zsh
       state: present
 
-#  - name: copy settings.txt to ~/
+#  - name: copy settings.dconf to ~/
 #    become_user: cjwade
 #    copy:
-#      src: files/settings.txt
-#      dest: /home/$USER/settings.txt
+#      src: files/settings.dconf
+#      dest: /home/$USER/settings.dconf
 #      owner: cjwade
 #      group: cjwade
 
-  - name: Load dconf settings from settings.txt
+  - name: Load dconf settings from settings.dconf
     #become_user: cjwade
-    ansible.builtin.shell: "dconf load / < settings.txt"
+    ansible.builtin.shell: "dconf load / < settings.dconf"
     args:
       executable: /bin/bash
 
