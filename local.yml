@@ -24,8 +24,8 @@
 
   tasks:
   - name: install terminal packages
-    package: 
-      name: 
+    package:
+      name:
         - htop
         - cmatrix
         - figlet
@@ -74,8 +74,8 @@
     ansible.builtin.shell: rm -rf ~/.zsh/zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
   - name: install graphical packages
-    package: 
-      name: 
+    package:
+      name:
         - alacritty
         - syncthing
         - steam
@@ -85,7 +85,7 @@
       state: present
 
   - name: install libreoffice packages
-    package: 
+    package:
       name: libreoffice
       state: present
 
@@ -227,7 +227,7 @@
     community.general.flatpak:
       name: com.usebottles.bottles
       state: present
-      method: user
+      method: system
 
   - name: Install com.github.tchx84.Flatseal as flatpak
     community.general.flatpak:
@@ -257,43 +257,43 @@
     community.general.flatpak:
       name: org.freecadweb.FreeCAD
       state: present
-      method: user
+      method: system
 
   - name: Install org.kicad.KiCad as flatpak
     community.general.flatpak:
       name: org.kicad.KiCad
       state: present
-      method: user
+      method: system
 
   - name: Install org.openscad.OpenSCAD as flatpak
     community.general.flatpak:
       name: org.openscad.OpenSCAD
       state: present
-      method: user
+      method: system
 
   - name: Install net.pcsx2.PCSX2 as flatpak
     community.general.flatpak:
       name: net.pcsx2.PCSX2
       state: present
-      method: user
+      method: system
 
   - name: Install org.DolphinEmu.dolphin-emu as flatpak
     community.general.flatpak:
       name: org.DolphinEmu.dolphin-emu
       state: present
-      method: user
+      method: system
 
   - name: Install org.citra_emu.citra as flatpak
     community.general.flatpak:
       name: org.citra_emu.citra
       state: present
-      method: user
+      method: system
 
   - name: Install org.libretro.RetroArch as flatpak
     community.general.flatpak:
       name: org.libretro.RetroArch
       state: present
-      method: user
+      method: system
 
   - name: Change shell to zsh
     become_user: cjwade
