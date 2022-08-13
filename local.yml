@@ -35,7 +35,7 @@
 
   - name: Load dconf settings from settings.txt
     #become_user: cjwade
-    ansible.builtin.shell: "dconf load / < files/settings.txt"
+    ansible.builtin.shell: "dconf load / < settings.txt"
 
 #  - name: set dash-to-dock preferences
 #    become_user: cjwade
