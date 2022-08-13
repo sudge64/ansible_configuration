@@ -23,7 +23,7 @@
         - python3-psutil
         - python3-pip
         - zsh
-        - libdbus-1-dev
+        - dbus-x11
       state: present
 
 #  - name: copy settings.dconf to ~/
