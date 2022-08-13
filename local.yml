@@ -199,12 +199,14 @@
 #      method: system
 
   - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
+    become_user: testing
     community.general.flatpak:
       name: ["org.blender.Blender", "org.audacityteam.Audacity", "org.freac.freac", "org.gimp.GIMP", "org.inkscape.Inkscape", "fr.handbrake.ghb", "com.obsproject.Studio", "com.orama_interactive.Pixelorama", "org.kde.krita"]
       state: present
       method: system
 
   - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
+    become_user: testing
     community.general.flatpak:
       name: 
         - com.usebottles.Bottles
@@ -216,6 +218,7 @@
       method: system
 
   - name: install CAD flatpaks (FreeCAD, KiCad, OpenSCAD)
+    become_user: testing
     community.general.flatpak:
       name: 
         - org.freecadweb.FreeCAD
@@ -225,6 +228,7 @@
       method: system
 
   - name: install funtime flatpaks (Dolphin, Citra, PCSX2, RetroArch)
+    become_user: testing
     community.general.flatpak:
       name: 
         - net.pcsx2.PCSX2
@@ -235,6 +239,7 @@
       method: system
 
   - name: Change shell to zsh
+    become_user: testing
     ansible.builtin.shell: touch "$HOME/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
   - name: set favorite apps
