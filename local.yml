@@ -181,18 +181,24 @@
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
       method: system
 
+#  - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
+#    community.general.flatpak:
+#      name: 
+#        - org.blender.Blender
+#        - org.audacityteam.Audacity
+#        - org.freac.freac
+#        - org.gimp.GIMP
+#        - org.inkscape.Inkscape
+#        - fr.handbrake.ghb
+#        - com.obsproject.Studio
+#        - com.orama_interactive.Pixelorama
+#        - org.kde.krita
+#      state: present
+#      method: system
+
   - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
     community.general.flatpak:
-      name: 
-        - org.blender.Blender
-        - org.audacityteam.Audacity
-        - org.freac.freac
-        - org.gimp.GIMP
-        - org.inkscape.Inkscape
-        - fr.handbrake.ghb
-        - com.obsproject.Studio
-        - com.orama_interactive.Pixelorama
-        - org.kde.krita
+      name: ["org.blender.Blender", "org.audacityteam.Audacity", "org.freac.freac", "org.gimp.GIMP", "org.inkscape.Inkscape", "fr.handbrake.ghb", "com.obsproject.Studio", "com.orama_interactive.Pixelorama", "org.kde.krita"]
       state: present
       method: system
 
