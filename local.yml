@@ -330,7 +330,7 @@
 
   - name: Touch ~/.cache/zshhistory"
     become_user: cjwade
-    ansible.builtin.shell: touch "~/.cache/zshhistory"
+    ansible.builtin.shell: touch "/home/cjwade/.cache/zshhistory"
 
   - name: Install powerlevel10k and change default shell to zsh
     become_user: cjwade
