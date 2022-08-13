@@ -1,0 +1,3 @@
+[workstation]
+pop-os.localdomain
+ideapad3.localdomain

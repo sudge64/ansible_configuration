@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: alacritty.yml
   connection: local
   become: true
 
@@ -9,7 +9,18 @@
       apt: update_cache=yes
       changed_when: false
       when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
-      become: true
+
+- hosts: all
+  tags: base
+  become: true
+  roles:
+    - base
+
+- hosts: workstation
+  tags: workstation
+  become: true
+  roles:
+    - workstation
 
   tasks:
   - name: install terminal packages

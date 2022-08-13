@@ -1,8 +1,0 @@
-# Load distro-specific variables
-- include_vars: "{{ ansible_distrobution }}.yml"
-  tags: always
-
-- block:
-  ## User configs
-  - import_tasks: users/cjwade.yml
-
