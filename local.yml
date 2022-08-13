@@ -61,6 +61,12 @@
   - name: Install MangoHud from GitHub, manually, 2
     ansible.builtin.shell: pip3 install mako
 
+
+  - name: Install MangoHud from GitHub, manually, 3
+    become_user: cjwade
+    ansible.builtin.shell: mkdir /home/$USER/MangoHud
+    ignore_errors: yes
+
 #  - name: install MangoHud from GitHub, manually, 3
 #    become_user: cjwade
 #    ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
@@ -76,6 +82,7 @@
   - name: Install MangoHud from GitHub, manually, 5
     become_user: cjwade
     ansible.builtin.shell: cd MangoHud && meson build && ninja -C build install && cd ..
+    ignore_errors: yes
 
 #  - name: install zsh-syntax-highlighting from GitHub, manually
 #    become_user: cjwade
