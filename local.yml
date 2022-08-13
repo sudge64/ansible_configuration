@@ -199,7 +199,7 @@
     community.general.flatpak:
       name: org.blender.Blender
       state: present
-      method: user
+      method: system
 
   - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
     community.general.flatpak:
