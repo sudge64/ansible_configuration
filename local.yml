@@ -65,6 +65,7 @@
   - name: Install MangoHud from GitHub, manually, 3
     become_user: cjwade
     ansible.builtin.shell: mkdir /home/$USER/MangoHud
+    ignore_errors: yes
 
 #  - name: install MangoHud from GitHub, manually, 3
 #    become_user: cjwade
