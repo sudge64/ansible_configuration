@@ -29,9 +29,9 @@
     become_user: testing
     community.general.dconf:
       key: "/org/gnome/shell/extensions/dash-to-dock"
-      value: "['click-action=minimize-or-previews', 'dock-fixed=false', 'dock-position=LEFT', 'extend-height=false', 'hide=false', 'manualhide=false']"
+#      value: "['click-action=minimize-or-previews', 'dock-fixed=false', 'dock-position=LEFT', 'extend-height=false', 'hide=false', 'manualhide=false']"
 #      value: "['click-action='minimize-or-previews'', 'dock-fixed=false', 'dock-position='LEFT'', 'extend-height=false', 'hide=false', 'manualhide=false']"
-#      value: "['dock-fixed=false', 'extend-height=false', 'hide=false', 'manualhide=false']"
+      value: "['click-action='minimize-or-previews'', 'dock-fixed=false', 'dock-position='LEFT'', 'extend-height=false', 'hide=false', 'manualhide=false']"
 
   - name: set pop-cosmic workspace preference
     become_user: testing
@@ -173,7 +173,7 @@
       name: flathub
       state: present
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      method: system
+      method: user
 
   - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
     community.general.flatpak:
@@ -188,10 +188,9 @@
         - com.orama_interactive.Pixelorama
         - org.kde.krita
       state: present
-      #method: system
+      method: user
 
   - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
-    become_user: testing
     community.general.flatpak:
       name: 
         - com.usebottles.Bottles
@@ -200,20 +199,18 @@
         - org.godotengine.Godot
         - org.mozilla.Thunderbird
       state: present
-      method: system
+      method: user
 
   - name: install CAD flatpaks (FreeCAD, KiCad, OpenSCAD)
-    become_user: testing
     community.general.flatpak:
       name: 
         - org.freecadweb.FreeCAD
         - org.kicad.KiCad
         - org.openscad.OpenSCAD
       state: present
-      method: system
+      method: user
 
   - name: install funtime flatpaks (Dolphin, Citra, PCSX2, RetroArch)
-    become_user: testing
     community.general.flatpak:
       name: 
         - net.pcsx2.PCSX2
@@ -221,7 +218,7 @@
         - org.citra_emu.citra
         - org.libretro.RetroArch
       state: present
-      method: system
+      method: user
 
   - name: Change shell to zsh
     become_user: testing
