@@ -178,7 +178,7 @@
       name: flathub
       state: present
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      method: user
+      method: system
 
 #  - name: install sound & video flatpaks (audacity, blender, fre:ac, gimp, inkscape, handbrake, obs, pixelorama, krita)
 #    community.general.flatpak:
