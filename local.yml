@@ -29,7 +29,7 @@
     become_user: cjwade
     copy:
       src: files/settings.txt
-      dest: /home/$USER/settings.txt
+      dest: /settings.txt
       owner: cjwade
       group: cjwade
 
