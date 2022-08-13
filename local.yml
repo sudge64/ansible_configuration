@@ -23,6 +23,7 @@
         - python3-psutil
         - python3-pip
         - zsh
+        - libdbus-1-dev
       state: present
 
 #  - name: copy settings.dconf to ~/
@@ -32,12 +33,6 @@
 #      dest: /home/$USER/settings.dconf
 #      owner: cjwade
 #      group: cjwade
-
-  - name: Load dconf settings from settings.dconf
-    #become_user: cjwade
-    ansible.builtin.shell: pwd
-    args:
-      executable: /bin/bash
 
   - name: Load dconf settings from settings.dconf
     #become_user: cjwade
