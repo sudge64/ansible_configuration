@@ -26,7 +26,7 @@
       state: present
 
   - name: set dash-to-dock preferences
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/shell/extensions/dash-to-dock"
       value: "['click-action=minimize-or-previews', 'dock-fixed=false', 'dock-position=LEFT', 'extend-height=false', 'hide=false', 'manualhide=false']"
@@ -34,27 +34,27 @@
 #      value: "['click-action='minimize-or-previews'', 'dock-fixed=false', 'dock-position='LEFT'', 'extend-height=false', 'hide=false', 'manualhide=false']"
 
   - name: set pop-cosmic workspace preference
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/shell/extensions/pop-cosmic"
       value: "'workspace-picker-left=false'"
 
   - name: set desktop preferences
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/desktop/interface"
 #      value: "['clock-show-seconds=false', 'clock-show-weekday=true', 'color-scheme='prefer-dark'', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing='grayscale'', 'font-hinting='slight'', 'toolkit-accessibility=false']"
       value: "['clock-show-seconds=false', 'clock-show-weekday=true', 'color-scheme=prefer-dark', 'enable-animations=false', 'enable-hot-corners=true', 'font-antialiasing=grayscale', 'font-hinting=slight', 'toolkit-accessibility=false']"
 
   - name: set keyboard shortcuts
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/settings-daemon/plugins/media-keys"
 #      value: "['email=['<Super>f']', 'home=['<Super>e']']"
       value: "['email=[<Super>f]', 'home=[<Super>e]']"
 
   - name: set program menu preferences
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/desktop/wm/preferences"
 #      value: "['button-layout='appmenu:minimize,maximize,close'', 'home=['<Super>e']']"
@@ -80,15 +80,15 @@
     ansible.builtin.shell: pip3 install mako
 
   - name: install MangoHud from GitHub, manually, 3
-    become_user: testing
+    become_user: cjwade
     ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
 
   - name: install zsh-syntax-highlighting from GitHub, manually
-    become_user: testing
+    become_user: cjwade
     ansible.builtin.shell: rm -rf zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
   - name: install zsh-autosuggestions from GitHub, manually
-    become_user: testing
+    become_user: cjwade
     ansible.builtin.shell: rm -rf ~/.zsh/zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
   - name: install graphical packages
@@ -114,59 +114,66 @@
 #    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
 
   - name: Ensure fonts directory
+    become_user: cjwade
     file:
-      path: "/home/testing/.local/share/fonts"
+      path: "~/.local/share/fonts"
       state: directory
 
   - name: Meslo exists
-    become_user: testing
-    shell: "ls /home/testing/.local/share/fonts/Meslo*"
+    become_user: cjwade
+    shell: "ls ~/.local/share/fonts/Meslo*"
     register: meslo_exists
     ignore_errors: yes
 
   - name: Download Meslo
-    become_user: testing
+    become_user: cjwade
     when: meslo_exists is failed
     ansible.builtin.unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-      dest: "/home/testing/.local/share/fonts"
+      dest: "~/.local/share/fonts"
       remote_src: yes
 
   - name: make directory ~/.config/alacritty/
-    ansible.builtin.shell: mkdir /home/testing/.config/alacritty/
+    become_user: cjwade
+    ansible.builtin.shell: mkdir ~/.config/alacritty/
     ignore_errors: yes
 
   - name: make directory ~/.config/MangoHud/
-    ansible.builtin.shell: mkdir /home/testing/.config/MangoHud/
+    become_user: cjwade
+    ansible.builtin.shell: mkdir ~/.config/MangoHud/
     ignore_errors: yes
 
   - name: copy alacritty.yml
+    become_user: cjwade
     copy:
       src: files/alacritty.yml
-      dest: /home/testing/.config/alacritty/alacritty.yml
-      owner: testing
-      group: testing
+      dest: ~/.config/alacritty/alacritty.yml
+      owner: cjwade
+      group: cjwade
 
   - name: copy MangoHud.conf
+    become_user: cjwade
     copy:
       src: files/MangoHud.conf
-      dest: /home/testing/.config/MangoHud/MangoHud.conf
-      owner: testing
-      group: testing
+      dest: ~/.config/MangoHud/MangoHud.conf
+      owner: cjwade
+      group: cjwade
 
   - name: copy .zshrc file
+    become_user: cjwade
     copy:
       src: files/.zshrc
-      dest: /home/testing/.zshrc
-      owner: testing
-      group: testing
+      dest: ~/.zshrc
+      owner: cjwade
+      group: cjwade
 
   - name: copy .p10k.zsh file
+    become_user: cjwade
     copy:
       src: files/.p10k.zsh
-      dest: /home/testing/.p10k.zsh
-      owner: testing
-      group: testing
+      dest: ~/.p10k.zsh
+      owner: cjwade
+      group: cjwade
 
   - name: flatpak present
     ansible.builtin.apt:
@@ -307,17 +314,17 @@
       method: user
 
   - name: Change shell to zsh
-    become_user: testing
+    become_user: cjwade
     ansible.builtin.shell: touch "$HOME/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
   - name: set favorite apps
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/shell"
       value: "'favorite-apps=['pop-cosmic-launcher.desktop', 'pop-cosmic-workspaces.desktop', 'pop-cosmic-applications.desktop', 'com.alacritty.Alacritty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'vlc.desktop', 'org.mozilla.Thunderbird.desktop', 'code.desktop', 'steam.desktop', 'virt-manager.desktop', 'io.elementary.appcenter.desktop', 'gnome-control-center.desktop']'"
 
   - name: set desktop do not disturb
-    become_user: testing
+    become_user: cjwade
     community.general.dconf:
       key: "/org/gnome/desktop/notifications"
       value: "['application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty']', 'value: 'show-banners=false']"
