@@ -195,7 +195,7 @@
         - com.orama_interactive.Pixelorama
         - org.kde.krita
       state: present
-      method: system
+      #method: system
 
   - name: install generally useful flatpaks (bottles, flatseal, extension manager, godot, thunderbird)
     become_user: testing
