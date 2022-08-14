@@ -67,10 +67,6 @@
     ansible.builtin.shell: mkdir /home/$USER/MangoHud
     ignore_errors: yes
 
-#  - name: install MangoHud from GitHub, manually, 3
-#    become_user: cjwade
-#    ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
-
   - name: Install MangoHud from GitHub 4
     become_user: cjwade
     ansible.builtin.git:
@@ -84,10 +80,6 @@
     ansible.builtin.shell: cd MangoHud && meson build && ninja -C build install && cd ..
     ignore_errors: yes
 
-#  - name: install zsh-syntax-highlighting from GitHub, manually
-#    become_user: cjwade
-#    ansible.builtin.shell: rm -rf ~/.zsh/zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-
   - name: Install zsh-syntax-highlighting from GitHub
     become_user: cjwade
     ansible.builtin.git:
@@ -95,10 +87,6 @@
       dest: /home/cjwade/.zsh/zsh-syntax-highlighting
       clone: yes
       update: yes
-
-#  - name: install zsh-autosuggestions from GitHub, manually
-#    become_user: cjwade
-#    ansible.builtin.shell: rm -rf ~/.zsh/zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
   - name: Install zsh-syntax-highlighting from GitHub
     become_user: cjwade
@@ -330,10 +318,6 @@
       name: org.libretro.RetroArch
       state: present
       method: system
-
-#  - name: Touch ~/.cache/zshhistory"
-#    become_user: cjwade
-#    ansible.builtin.shell: touch "~/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$USER/.zsh/powerlevel10k
 
   - name: Touch /home/$USER/.cache/zshhistory"
     become_user: cjwade
