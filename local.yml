@@ -350,10 +350,6 @@
       update: yes
       depth: 1
 
-  - name: Change default shell to zsh
-    become_user: cjwade
-    ansible.builtin.shell: chsh $USER
-
   - name: add ansible user
     user:
       name: ansible_user
