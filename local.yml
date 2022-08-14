@@ -333,7 +333,7 @@
 
 #  - name: Touch ~/.cache/zshhistory"
 #    become_user: cjwade
-#    ansible.builtin.shell: touch "~/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10kS
+#    ansible.builtin.shell: touch "~/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 
   - name: Touch /home/$USER/.cache/zshhistory"
     become_user: cjwade
@@ -341,13 +341,18 @@
       path: /home/$USER/.cache/zshhistory
       state: touch
 
-  - name: Install powerlevel10k and change default shell to zsh
+  - name: Install powerlevel10k
     become_user: cjwade
     ansible.builtin.git:
       repo: 'https://github.com/romkatv/powerlevel10k'
-      dest: /home/$USER/.zsh/powerlevel10k/
+      dest: /home/$USER/.zsh/powerlevel10k
       clone: no
       update: yes
+      depth: 1
+
+  - name: Change default shell to zsh
+    become_user: cjwade
+    ansible.builtin.shell: chsh $USER
 
   - name: add ansible user
     user:
