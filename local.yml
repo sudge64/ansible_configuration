@@ -42,7 +42,7 @@
     args:
       executable: /bin/bash
 
-  - name: Install MangoHud from GitHub, manually, 1
+  - name: Install MangoHud from GitHub 1
     package:
       name:
         - build-essential
@@ -58,11 +58,11 @@
   - name: Fix broken installs
     ansible.builtin.shell: apt --fix-broken install
 
-  - name: Install MangoHud from GitHub, manually, 2
+  - name: Install MangoHud from GitHub 2
     ansible.builtin.shell: pip3 install mako
 
 
-  - name: Install MangoHud from GitHub, manually, 3
+  - name: Install MangoHud from GitHub 3
     become_user: cjwade
     ansible.builtin.shell: mkdir /home/$USER/MangoHud
     ignore_errors: yes
@@ -71,7 +71,7 @@
 #    become_user: cjwade
 #    ansible.builtin.shell: rm -rf MangoHud && git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git && cd MangoHud && meson build && ninja -C build install && cd ~
 
-  - name: Install MangoHud from GitHub, manually, 4
+  - name: Install MangoHud from GitHub 4
     become_user: cjwade
     ansible.builtin.git:
       repo: 'https://github.com/flightlessmango/MangoHud.git'
@@ -79,7 +79,7 @@
       clone: no
       update: yes
 
-  - name: Install MangoHud from GitHub, manually, 5
+  - name: Install MangoHud from GitHub 5
     become_user: cjwade
     ansible.builtin.shell: cd MangoHud && meson build && ninja -C build install && cd ..
     ignore_errors: yes
@@ -88,7 +88,7 @@
 #    become_user: cjwade
 #    ansible.builtin.shell: rm -rf ~/.zsh/zsh-syntax-highlighting/ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
-  - name: Install zsh-syntax-highlighting from GitHub, manually
+  - name: Install zsh-syntax-highlighting from GitHub
     become_user: cjwade
     ansible.builtin.git:
       repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
@@ -100,7 +100,7 @@
 #    become_user: cjwade
 #    ansible.builtin.shell: rm -rf ~/.zsh/zsh-autosuggestions/ && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
-  - name: Install zsh-syntax-highlighting from GitHub, manually
+  - name: Install zsh-syntax-highlighting from GitHub
     become_user: cjwade
     ansible.builtin.git:
       repo: 'https://github.com/zsh-users/zsh-autosuggestions'
@@ -333,17 +333,19 @@
 
 #  - name: Touch ~/.cache/zshhistory"
 #    become_user: cjwade
-#    ansible.builtin.shell: touch "~/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
+#    ansible.builtin.shell: touch "~/.cache/zshhistory" && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10kS
 
-  - name: Touch ~/.cache/zshhistory"
+  - name: Touch /home/$USER/.cache/zshhistory"
     become_user: cjwade
-    ansible.builtin.shell: touch "/home/cjwade/.cache/zshhistory"
+    ansible.builtin.file:
+      path: /home/$USER/.cache/zshhistory
+      state: touch
 
   - name: Install powerlevel10k and change default shell to zsh
     become_user: cjwade
     ansible.builtin.git:
-      repo: 'https://github.com/romkatv/powerlevel10k.git'
-      dest: /home/$USER/.zsh/powerlevel10k
+      repo: 'https://github.com/romkatv/powerlevel10k'
+      dest: /home/$USER/.zsh/powerlevel10k/
       clone: no
       update: yes
 
