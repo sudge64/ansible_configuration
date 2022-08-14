@@ -75,7 +75,7 @@
     become_user: cjwade
     ansible.builtin.git:
       repo: https://github.com/flightlessmango/MangoHud.git
-      dest: /home/$USER/MangoHud
+      dest: /home/cjwade/MangoHud
       clone: no
       update: yes
 
@@ -92,7 +92,7 @@
     become_user: cjwade
     ansible.builtin.git:
       repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-      dest: /home/$USER/.zsh/zsh-syntax-highlighting
+      dest: /home/cjwade/.zsh/zsh-syntax-highlighting
       clone: no
       update: yes
 
@@ -104,7 +104,7 @@
     become_user: cjwade
     ansible.builtin.git:
       repo: https://github.com/zsh-users/zsh-autosuggestions
-      dest: /home/$USER/.zsh/zsh-autosuggestions
+      dest: /home/cjwade/.zsh/zsh-autosuggestions
       clone: no
       update: yes
 
@@ -345,7 +345,7 @@
     become_user: cjwade
     ansible.builtin.git:
       repo: https://github.com/romkatv/powerlevel10k.git
-      dest: /home/$USER/.zsh/powerlevel10k
+      dest: /home/cjwade/.zsh/powerlevel10k
       clone: no
       update: yes
       depth: 1
