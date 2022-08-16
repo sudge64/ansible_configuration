@@ -106,6 +106,7 @@
         - code
         - cura
         - gnome-tweaks
+        - vlc
       state: present
 
   - name: install libreoffice packages
