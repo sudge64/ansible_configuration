@@ -4,11 +4,17 @@
   become: true
 
   pre_tasks:
-    - name: Update package manager cache
+    - name: Update package manager "apt" cache
       tags: always
       apt: update_cache=yes
       changed_when: false
       when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+
+    - name: Update package manager "dnf" cache
+      tags: always
+      dnf: update_cache=yes
+      changed_when: false
+      when: ansible_distribution in ["Fedora"]
 
 #- hosts: all
 #  tags: base
@@ -37,7 +43,16 @@
         - dbus-x11
       state: present
 
+  - name: copy settings.dconf
+    become_user: cjwade
+    copy:
+      src: files/settings.dconf
+      dest: /home/$USER/settings.dconf
+      owner: cjwade
+      group: cjwade
+
   - name: Load dconf settings from settings.dconf
+    become_user: cjwade
     ansible.builtin.shell: dconf load / < settings.dconf
     args:
       executable: /bin/bash
@@ -59,7 +74,9 @@
     ansible.builtin.shell: apt --fix-broken install
 
   - name: Install MangoHud from GitHub 2
-    ansible.builtin.shell: pip3 install mako
+    ansible.builtin.pip:
+      name: mako
+      executable: pip3
 
 
   - name: Install MangoHud from GitHub 3
