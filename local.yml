@@ -345,6 +345,12 @@
       state: present
       method: system
 
+  - name: Install net.davidotek.pupgui2 (protonup-qt) as flatpak
+    community.general.flatpak:
+      name: net.davidotek.pupgui2
+      state: present
+      method: system
+
   - name: Touch /home/$USER/.cache/zshhistory"
     become_user: cjwade
     ansible.builtin.file:
