@@ -15,8 +15,8 @@ window-y=437
 mode='hidpi'
 
 [io/elementary/appcenter/settings]
-cached-drivers=['nvidia-driver-510, (kernel modules provided by nvidia-dkms-510)', 'nvidia-driver-470-server, (kernel modules provided by nvidia-dkms-470-server)', 'nvidia-driver-515, (kernel modules provided by nvidia-dkms-515)', 'nvidia-driver-390, (kernel modules provided by nvidia-dkms-390)', 'nvidia-driver-418-server, (kernel modules provided by nvidia-dkms-418-server)', 'nvidia-driver-515-server, (kernel modules provided by nvidia-dkms-515-server)', 'nvidia-driver-470, (kernel modules provided by nvidia-dkms-470)', 'nvidia-driver-510-server, (kernel modules provided by nvidia-dkms-510-server)', 'nvidia-driver-450-server, (kernel modules provided by nvidia-dkms-450-server)']
-last-refresh-time=int64 1660614058
+cached-drivers=['nvidia-driver-390, (kernel modules provided by nvidia-dkms-390)', 'nvidia-driver-510, (kernel modules provided by nvidia-dkms-510)', 'nvidia-driver-418-server, (kernel modules provided by nvidia-dkms-418-server)', 'nvidia-driver-470, (kernel modules provided by nvidia-dkms-470)', 'nvidia-driver-510-server, (kernel modules provided by nvidia-dkms-510-server)', 'nvidia-driver-450-server, (kernel modules provided by nvidia-dkms-450-server)', 'nvidia-driver-470-server, (kernel modules provided by nvidia-dkms-470-server)', 'nvidia-driver-515, (kernel modules provided by nvidia-dkms-515)', 'nvidia-driver-515-server, (kernel modules provided by nvidia-dkms-515-server)']
+last-refresh-time=int64 1661291955
 window-maximized=true
 window-position=(395, 195)
 window-size=(910, 640)
@@ -44,7 +44,7 @@ window-size=(996, 600)
 window-state=87168
 
 [org/gnome/control-center]
-last-panel='wacom'
+last-panel='keyboard'
 
 [org/gnome/desktop]
 interface='workspace-picker-left=false'
@@ -107,8 +107,11 @@ font-hinting='slight'
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty', 'org-freecadweb-freecad']
+application-children=['org-gnome-nautilus', 'io-elementary-appcenter', 'org-gnome-gedit', 'com-github-donadigo-eddy', 'gnome-printers-panel', 'firefox', 'vlc', 'org-gnome-lollypop', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gimp-gimp', 'steam', 'org-kicad-kicad', 'com-alacritty-alacritty', 'org-freecadweb-freecad', 'code', 'us-zoom-zoom']
 show-banners=false
+
+[org/gnome/desktop/notifications/application/code]
+application-id='code.desktop'
 
 [org/gnome/desktop/notifications/application/com-alacritty-alacritty]
 application-id='com.alacritty.Alacritty.desktop'
@@ -152,6 +155,9 @@ application-id='org.kicad.KiCad.desktop'
 [org/gnome/desktop/notifications/application/steam]
 application-id='steam.desktop'
 
+[org/gnome/desktop/notifications/application/us-zoom-zoom]
+application-id='us.zoom.Zoom.desktop'
+
 [org/gnome/desktop/notifications/application/vlc]
 application-id='vlc.desktop'
 
@@ -172,7 +178,7 @@ background-color='rgb(0,0,0)'
 use-background-color=true
 
 [org/gnome/evince/default]
-window-ratio=(2.090890769850867, 1.4950614181955111)
+window-ratio=(2.0915032679738563, 1.7777777777777777)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -196,7 +202,7 @@ active-plugins=['spell', 'sort', 'filebrowser', 'modelines', 'docinfo', 'openlin
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/cjwade'
+virtual-root='file:///home/cjwade/.config/kitty'
 
 [org/gnome/gedit/preferences/ui]
 show-tabs-mode='auto'
@@ -209,12 +215,12 @@ size=(1276, 1361)
 state=87168
 
 [org/gnome/gnome-system-monitor]
-current-tab='processes'
+current-tab='resources'
 maximized=false
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(806, 688, 50, 50)
+window-state=(806, 688, 1086, 353)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
@@ -234,18 +240,25 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(1052, 771)
+initial-size=(1093, 775)
 maximized=false
 sidebar-width=194
 
 [org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/PopLaunch1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
 email=['<Super>f']
 home=['<Super>e']
+terminal=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/PopLaunch1]
 binding='Launch1'
 command='gnome-control-center wifi'
 name='WiFi'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>t'
+command='kitty'
+name='kitty'
 
 [org/gnome/shell]
 app-picker-layout=[{'com.usebottles.bottles.desktop': <{'position': <0>}>, 'org.gnome.Calculator.desktop': <{'position': <1>}>, 'discord.desktop': <{'position': <2>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <3>}>, 'com.github.tchx84.Flatseal.desktop': <{'position': <4>}>, 'org.godotengine.Godot.desktop': <{'position': <5>}>}, {'Pop-Office': <{'position': <0>}>, 'remote-viewer.desktop': <{'position': <1>}>, 'stacer.desktop': <{'position': <2>}>, 'Pop-System': <{'position': <3>}>, 'org.gnome.tweaks.desktop': <{'position': <4>}>, 'Pop-Utility': <{'position': <5>}>, '4d2b99fb-b82d-4fea-837c-444dead21163': <{'position': <6>}>, 'b01027d6-a533-4b4a-b3e8-6c2519243da1': <{'position': <7>}>, '40177a6c-b3a6-4451-a520-b93b6fbbbbe6': <{'position': <8>}>, 'org.gnome.Calendar.desktop': <{'position': <9>}>, 'thunar-bulk-rename.desktop': <{'position': <10>}>, 'org.gnome.Contacts.desktop': <{'position': <11>}>, 'org.gnome.Terminal.desktop': <{'position': <12>}>, 'org.gnome.gedit.desktop': <{'position': <13>}>, 'org.gnome.Weather.desktop': <{'position': <14>}>, 'winetricks.desktop': <{'position': <15>}>, 'thunar-settings.desktop': <{'position': <16>}>, 'thunar-volman-settings.desktop': <{'position': <17>}>, 'thunar.desktop': <{'position': <18>}>, 'syncthing-start.desktop': <{'position': <19>}>, 'github-desktop.desktop': <{'position': <20>}>, 'syncthing-ui.desktop': <{'position': <21>}>}, {'54e03842-b01f-4720-8657-ce7d31ea5df8': <{'position': <0>}>}]
@@ -296,6 +309,10 @@ sort-order='ascending'
 type-format='category'
 window-size=(2560, 1408)
 
+[org/gtk/settings/color-chooser]
+custom-colors=[(0.15686274509803921, 0.15686274509803921, 0.15686274509803921, 1.0), (1.0, 0.0, 0.0, 1.0)]
+selected-color=(true, 0.15686274509803921, 0.15686274509803921, 0.15686274509803921, 1.0)
+
 [org/gtk/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
@@ -307,7 +324,7 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(732, 300)
+window-position=(732, 284)
 window-size=(1096, 856)
 
 [org/virt-manager/virt-manager]
@@ -335,7 +352,7 @@ show-toolbar=true
 graphics-type='system'
 
 [org/virt-manager/virt-manager/urls]
-isos=['/var/lib/libvirt/images/pop-os_22.04_amd64_intel_4.iso', '/var/lib/libvirt/images/Win10_21H1_English_x64.iso', '/var/lib/libvirt/images/virtio-win-0.1.215.iso', '/var/lib/libvirt/images/Win11_English_x64.iso']
+isos=['/var/lib/libvirt/images/WebPremiumCS5-5.iso', '/var/lib/libvirt/images/pop-os_22.04_amd64_intel_4.iso', '/var/lib/libvirt/images/Win10_21H1_English_x64.iso', '/var/lib/libvirt/images/virtio-win-0.1.215.iso', '/var/lib/libvirt/images/Win11_English_x64.iso']
 
 [org/virt-manager/virt-manager/vmlist-fields]
 disk-usage=false
@@ -360,6 +377,11 @@ vm-window-size=(1920, 1019)
 autoconnect=1
 scaling=1
 vm-window-size=(1024, 810)
+
+[org/virt-manager/virt-manager/vms/808120954cd74d7a8e01cbab1130f146]
+autoconnect=1
+scaling=1
+vm-window-size=(1711, 1063)
 
 [org/virt-manager/virt-manager/vms/8902fe5b396a46a7a9a5e21679ccb90f]
 autoconnect=1

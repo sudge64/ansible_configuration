@@ -116,7 +116,7 @@
   - name: install graphical packages
     package:
       name:
-        - alacritty
+        - kitty
         - syncthing
         - steam
         - stacer
@@ -164,9 +164,9 @@
       dest: "/home/$USER/.local/share/fonts"
       remote_src: yes
 
-  - name: make directory ~/.config/alacritty/
+  - name: make directory ~/.config/kitty/
     become_user: cjwade
-    ansible.builtin.shell: mkdir /home/$USER/.config/alacritty/
+    ansible.builtin.shell: mkdir /home/$USER/.config/kitty/
     ignore_errors: yes
 
   - name: make directory ~/.config/MangoHud/
@@ -174,11 +174,11 @@
     ansible.builtin.shell: mkdir /home/$USER/.config/MangoHud/
     ignore_errors: yes
 
-  - name: copy alacritty.yml
+  - name: copy kitty.conf
     become_user: cjwade
     copy:
-      src: files/alacritty.yml
-      dest: /home/$USER/.config/alacritty/alacritty.yml
+      src: files/kitty.conf
+      dest: /home/$USER/.config/kitty/kitty.conf
       owner: cjwade
       group: cjwade
 
