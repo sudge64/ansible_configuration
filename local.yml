@@ -124,6 +124,7 @@
         - cura
         - gnome-tweaks
         - vlc
+        - flameshot
       state: present
 
   - name: install libreoffice packages
