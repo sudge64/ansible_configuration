@@ -53,7 +53,7 @@
 
   - name: Load dconf settings from settings.dconf
     become_user: cjwade
-    ansible.builtin.shell: dconf load / < settings.dconf
+    ansible.builtin.shell: cd ~ && dconf load / < settings.dconf
     args:
       executable: /bin/bash
 
