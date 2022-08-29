@@ -36,8 +36,8 @@
       state: present
       method: system
     when:
-      - org.gimp.GIMP is defined
-      - org.gimp.GIMP == true
+      - gimp is defined
+      - gimp == true
   
   - name: copy dnf.conf
     copy:
