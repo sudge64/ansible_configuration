@@ -68,7 +68,15 @@
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
     
   - name: Install the 'media codecs' package group
-    ansible.builtin.shell: dnf groupupdate mutlimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin && dnf groupupdate sound-and-video
+    ansible.builtin.dnf:
+      name:
+        - gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+        - lame\* --exclude=lame-devel
+      state: present
+    when: ansible_distribution in ["Fedora"]
+    
+  - name: Group Upgrade with Multimedia
+    ansible.builtin.shell: group upgrade --with-optional Multimedia
     when: ansible_distribution in ["Fedora"]
     
   - name: Install the 'Development tools' package group
@@ -80,6 +88,12 @@
   - name: Install the '@virtualization' package group
     ansible.builtin.dnf:
       name: '@virtualization'
+      state: present
+    when: ansible_distribution in ["Fedora"]
+    
+  - name: Install the '@C development tools and libraries' package group
+    ansible.builtin.dnf:
+      name: '@c development tools and libraries'
       state: present
     when: ansible_distribution in ["Fedora"]
 
