@@ -29,6 +29,21 @@
 #    - workstation
 
   tasks:
+  
+  - name: copy dnf.conf
+    copy:
+      src: files/dnf.conf
+      dest: /etc/dnf/dnf.conf
+    when: ansible_distribution in ["Fedora"]
+  
+  - name: Enable RPM Fusion Repos
+    ansible.builtin.shell: dnf install \ https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+    when: ansible_distribution in ["Fedora"]
+
+  - name: Enable RPM Nonfree Repos
+    ansible.builtin.shell: sudo dnf install \ https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    when: ansible_distribution in ["Fedora"]  
+  
   - name: install terminal packages
     package:
       name:
@@ -50,6 +65,23 @@
       dest: /home/$USER/settings.dconf
       owner: cjwade
       group: cjwade
+    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+    
+  - name: Install the 'media codecs' package group
+    ansible.builtin.shell: dnf groupupdate mutlimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin && dnf groupupdate sound-and-video
+    when: ansible_distribution in ["Fedora"]
+    
+  - name: Install the 'Development tools' package group
+    ansible.builtin.dnf:
+      name: '@Development tools'
+      state: present
+    when: ansible_distribution in ["Fedora"]
+      
+  - name: Install the '@virtualization' package group
+    ansible.builtin.dnf:
+      name: '@virtualization'
+      state: present
+    when: ansible_distribution in ["Fedora"]
 
   - name: Load dconf settings from settings.dconf
     become_user: cjwade
@@ -69,15 +101,16 @@
         - libxnvctrl-dev
         - libdbus-1-dev
       state: present
+    ignore_errors: yes
 
   - name: Fix broken installs
     ansible.builtin.shell: apt --fix-broken install
+    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
   - name: Install MangoHud from GitHub 2
     ansible.builtin.pip:
       name: mako
       executable: pip3
-
 
   - name: Install MangoHud from GitHub 3
     become_user: cjwade
@@ -126,11 +159,13 @@
         - vlc
         - flameshot
       state: present
+    ignore_errors: yes
 
   - name: install libreoffice packages
     package:
       name: libreoffice
       state: present
+    ignore_errors: yes
 
   - name: install nautilus add-in packages (nautilus-image-converter & gnome-sushi)
     package:
@@ -138,12 +173,7 @@
         - nautilus-image-converter
         - gnome-sushi
       state: present
-
-#  - name: install yacreader (xUbuntu 22.04)
-#    ansible.builtin.shell: echo 'deb http://download.opensuse.org/repositories/home:/selmf/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:selmf.list && curl -fsSL https://download.opensuse.org/repositories/home:selmf/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_selmf.gpg > /dev/null && sudo apt update -y && sudo apt install yacreader -y
-
-#  - name: install discord .deb package
-#    ansible.builtin.shell: wget 'https://discord.com/api/download?platform=linux&format=deb' #&& sudo dpkg -i download\?platform=linux\&format=deb
+    ignore_errors: yes
 
   - name: Ensure fonts directory
     become_user: cjwade
@@ -211,6 +241,7 @@
     ansible.builtin.apt:
       name: flatpak
       state: present
+    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
   - name: flathub flatpak repo
     community.general.flatpak_remote:
