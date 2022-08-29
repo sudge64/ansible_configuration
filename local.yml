@@ -30,11 +30,20 @@
 
   tasks:
   
-#  - name: copy dnf.conf
-#    copy:
-#      src: files/dnf.conf
-#      dest: /etc/dnf/dnf.conf
-#    when: ansible_distribution in ["Fedora"]
+  - name: Install org.gimp.GIMP as flatpak
+    community.general.flatpak:
+      name: org.gimp.GIMP
+      state: present
+      method: system
+    when:
+      - org.gimp.GIMP is defined
+      - org.gimp.GIMP == true
+  
+  - name: copy dnf.conf
+    copy:
+      src: files/dnf.conf
+      dest: /etc/dnf/dnf.conf
+    when: ansible_distribution in ["Fedora"]
   
   - name: Enable RPM Fusion Repos
     ansible.builtin.shell: dnf install \ https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -287,6 +296,9 @@
       name: org.gimp.GIMP
       state: present
       method: system
+    when:
+      - org.gimp.GIMP is defined
+      - org.gimp.GIMP == true
 
   - name: Install org.inkscape.Inkscape as flatpak
     community.general.flatpak:
@@ -389,12 +401,16 @@
       name: org.libretro.RetroArch
       state: present
       method: system
+    when: 
 
   - name: Install net.davidotek.pupgui2 (protonup-qt) as flatpak
     community.general.flatpak:
       name: net.davidotek.pupgui2
       state: present
       method: system
+    when:
+      - net.davidotek.pupgui2 is defined
+      - net.davidotek.pupgui2 == true
 
   - name: Touch /home/$USER/.cache/zshhistory"
     become_user: cjwade
