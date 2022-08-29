@@ -73,7 +73,7 @@
     
   - name: Install the 'Development tools' package group
     ansible.builtin.dnf:
-      name: '@Development tools'
+      name: '@development tools'
       state: present
     when: ansible_distribution in ["Fedora"]
       
