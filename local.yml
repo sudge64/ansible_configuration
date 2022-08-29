@@ -41,7 +41,7 @@
     when: ansible_distribution in ["Fedora"]
 
   - name: Enable RPM Nonfree Repos
-    ansible.builtin.shell: sudo dnf install \ https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    ansible.builtin.shell: dnf install \ https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     when: ansible_distribution in ["Fedora"]  
   
   - name: install terminal packages
