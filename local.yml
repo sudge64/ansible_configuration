@@ -16,23 +16,28 @@
     changed_when: false
     when: ansible_distribution in ["Fedora"]
 
-#- hosts: all
-#  tags: base
-#  become: true
-#  roles:
-#    - base
+- hosts: all
+  tags: base
+  become: true
+  roles:
+    - base
 
-#- hosts: workstation
-#  tags: workstation
+#- hosts: fedora
+#  tags: fedora
 #  become: true
 #  roles:
-#    - workstation
+#    - fedora
+
+#- hosts: pop!_os
+#  tags: pop!_os
+#  become: true
+#  roles:
+#    - pop!_os
 
   tasks:
   
   - name: Install Flatpaks
-    roles:
-      - base
+    import_tasks: roles/base/tasks/software/flatpaks.yml
       
   - name: Load Fedora tasks if ansible distribution is Fedora
     import_tasks: roles/fedora/tasks/main.yml
@@ -41,8 +46,6 @@
   - name: Load Pop!_OS tasks if ansible distribution is Pop!_OS
     import_tasks: roles/pop!_os/tasks/main.yml
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
-  
-
   
   - name: install terminal packages
     package:
@@ -72,47 +75,6 @@
     ansible.builtin.shell: cd ~ && dconf load / < settings.dconf
     args:
       executable: /bin/bash
-
-  - name: Install MangoHud from GitHub 1
-    package:
-      name:
-        - build-essential
-        - meson
-        - ninja-build
-        - glslang-tools
-        - libx11-dev
-        - cmake
-        - libxnvctrl-dev
-        - libdbus-1-dev
-      state: present
-    ignore_errors: yes
-
-  - name: Fix broken installs
-    ansible.builtin.shell: apt --fix-broken install
-    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
-
-  - name: Install MangoHud from GitHub 2
-    ansible.builtin.pip:
-      name: mako
-      executable: pip3
-
-  - name: Install MangoHud from GitHub 3
-    become_user: cjwade
-    ansible.builtin.shell: mkdir /home/$USER/MangoHud
-    ignore_errors: yes
-
-  - name: Install MangoHud from GitHub 4
-    become_user: cjwade
-    ansible.builtin.git:
-      repo: https://github.com/flightlessmango/MangoHud.git
-      dest: /home/cjwade/MangoHud
-      clone: yes
-      update: yes
-
-  - name: Install MangoHud from GitHub 5
-    become_user: cjwade
-    ansible.builtin.shell: cd MangoHud && meson build && ninja -C build install && cd ..
-    ignore_errors: yes
 
   - name: Install zsh-syntax-highlighting from GitHub
     become_user: cjwade

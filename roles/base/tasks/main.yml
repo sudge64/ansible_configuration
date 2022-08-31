@@ -4,5 +4,4 @@
   
 - block:
   - import_tasks: software/flatpaks.yml
-  
-  
+  - import_tasks: software/github.yml
