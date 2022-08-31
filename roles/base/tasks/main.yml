@@ -1,7 +1,4 @@
 ---
-- include_vars: "{{ ansible_distribution }}.yml"
-  tags: always
-  
 - block:
   - import_tasks: software/packages.yml
   - import_tasks: software/dotfiles.yml
