@@ -56,11 +56,11 @@
 #      group: cjwade
 #    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
-  - name: Load dconf settings from settings.dconf
-    become_user: cjwade
-    ansible.builtin.shell: cd ~ && dconf load / < settings.dconf
-    args:
-      executable: /bin/bash
+#  - name: Load dconf settings from settings.dconf
+#    become_user: cjwade
+#    ansible.builtin.shell: cd ~ && dconf load / < settings.dconf
+#    args:
+#      executable: /bin/bash
 
   - name: add ansible user
     user:
