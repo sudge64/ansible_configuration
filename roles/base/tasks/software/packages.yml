@@ -1,4 +1,18 @@
 ---
+- name: install terminal packages
+  package:
+    name:
+      - htop
+      - cmatrix
+      - figlet
+      - cowsay
+      - neofetch
+      - python3-psutil
+      - python3-pip
+      - zsh
+      - dbus-x11
+    state: present
+    
 - name: install graphical packages
   package:
     name:

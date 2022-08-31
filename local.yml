@@ -36,19 +36,8 @@
 
   tasks:
 
-  - name: install terminal packages
-    package:
-      name:
-        - htop
-        - cmatrix
-        - figlet
-        - cowsay
-        - neofetch
-        - python3-psutil
-        - python3-pip
-        - zsh
-        - dbus-x11
-      state: present
+  - name: Load Base Tasks
+    import_tasks: roles/base/tasks/main.yml
 
   - name: Load Fedora tasks if ansible distribution is Fedora
     import_tasks: roles/fedora/tasks/main.yml
@@ -57,9 +46,6 @@
   - name: Load Pop!_OS tasks if ansible distribution is Pop!_OS
     import_tasks: roles/pop!_os/tasks/main.yml
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
-
-  - name: Load Base Tasks
-    import_tasks: roles/base/tasks/main.yml
 
 #  - name: copy settings.dconf
 #    become_user: cjwade
@@ -75,10 +61,6 @@
     ansible.builtin.shell: cd ~ && dconf load / < settings.dconf
     args:
       executable: /bin/bash
-
-
-
-
 
   - name: add ansible user
     user:
