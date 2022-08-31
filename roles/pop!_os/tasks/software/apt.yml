@@ -1,2 +1,3 @@
 ---
-#- name: 
+- name: Fix broken installs
+  ansible.builtin.shell: apt --fix-broken install

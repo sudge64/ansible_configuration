@@ -13,10 +13,6 @@
     state: present
   ignore_errors: yes
 
-- name: Fix broken installs
-  ansible.builtin.shell: apt --fix-broken install
-  when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
-
 - name: Install MangoHud from GitHub 2
   ansible.builtin.pip:
     name: mako
