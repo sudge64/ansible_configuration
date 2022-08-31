@@ -162,4 +162,3 @@
   when:
     - net.davidotek.pupgui2 is defined
     - net.davidotek.pupgui2 == true
-

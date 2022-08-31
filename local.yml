@@ -47,14 +47,14 @@
     import_tasks: roles/pop!_os/tasks/main.yml
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
-#  - name: copy settings.dconf
-#    become_user: cjwade
-#    copy:
-#      src: files/settings.dconf
-#      dest: /home/$USER/settings.dconf
-#      owner: cjwade
-#      group: cjwade
-#    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+  - name: copy settings.dconf
+    become_user: cjwade
+    copy:
+      src: files/settings.dconf
+      dest: /home/$USER/settings.dconf
+      owner: cjwade
+      group: cjwade
+    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
 #  - name: Load dconf settings from settings.dconf
 #    become_user: cjwade
