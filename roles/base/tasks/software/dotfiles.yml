@@ -1,0 +1,68 @@
+---
+- name: Ensure fonts directory
+  become_user: cjwade
+  file:
+    path: "/home/$USER/.local/share/fonts"
+    state: directory
+
+- name: Meslo exists
+  become_user: cjwade
+  shell: "ls /home/$USER/.local/share/fonts/Meslo*"
+  register: meslo_exists
+  ignore_errors: yes
+
+- name: Download Meslo
+  become_user: cjwade
+  when: meslo_exists is failed
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+    dest: "/home/$USER/.local/share/fonts"
+    remote_src: yes
+
+- name: make directory ~/.config/kitty/
+  become_user: cjwade
+  ansible.builtin.shell: mkdir /home/$USER/.config/kitty/
+  ignore_errors: yes
+
+- name: make directory ~/.config/MangoHud/
+  become_user: cjwade
+  ansible.builtin.shell: mkdir /home/$USER/.config/MangoHud/
+  ignore_errors: yes
+
+- name: copy kitty.conf
+  become_user: cjwade
+  copy:
+    src: files/kitty.conf
+    dest: /home/$USER/.config/kitty/kitty.conf
+    owner: cjwade
+    group: cjwade
+
+- name: copy MangoHud.conf
+  become_user: cjwade
+  copy:
+    src: files/MangoHud.conf
+    dest: /home/$USER/.config/MangoHud/MangoHud.conf
+    owner: cjwade
+    group: cjwade
+
+- name: copy .zshrc file
+  become_user: cjwade
+  copy:
+    src: files/.zshrc
+    dest: /home/$USER/.zshrc
+    owner: cjwade
+    group: cjwade
+
+- name: copy .p10k.zsh file
+  become_user: cjwade
+  copy:
+    src: files/.p10k.zsh
+    dest: /home/$USER/.p10k.zsh
+    owner: cjwade
+    group: cjwade
+
+- name: Touch /home/$USER/.cache/zshhistory"
+  become_user: cjwade
+  ansible.builtin.file:
+    path: /home/$USER/.cache/zshhistory
+    state: touch

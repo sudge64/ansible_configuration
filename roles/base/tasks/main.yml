@@ -3,5 +3,7 @@
   tags: always
   
 - block:
-  - import_tasks: software/flatpaks.yml
+  - import_tasks: software/packages.yml
+  - import_tasks: software/dotfiles.yml
   - import_tasks: software/github.yml
+  - import_tasks: software/flatpaks.yml

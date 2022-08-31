@@ -1,0 +1,29 @@
+---
+- name: install graphical packages
+  package:
+    name:
+      - kitty
+      - syncthing
+      - steam
+      - stacer
+      - code
+      - cura
+      - gnome-tweaks
+      - vlc
+      - flameshot
+    state: present
+  ignore_errors: yes
+
+- name: install libreoffice packages
+  package:
+    name: libreoffice
+    state: present
+  ignore_errors: yes
+
+- name: install nautilus add-in packages (nautilus-image-converter & gnome-sushi)
+  package:
+    name:
+      - nautilus-image-converter
+      - gnome-sushi
+    state: present
+  ignore_errors: yes

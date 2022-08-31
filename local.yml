@@ -35,18 +35,7 @@
 #    - pop!_os
 
   tasks:
-  
-  - name: Install Flatpaks
-    import_tasks: roles/base/tasks/software/flatpaks.yml
-      
-  - name: Load Fedora tasks if ansible distribution is Fedora
-    import_tasks: roles/fedora/tasks/main.yml
-    when: ansible_distribution in ["Fedora"]
 
-  - name: Load Pop!_OS tasks if ansible distribution is Pop!_OS
-    import_tasks: roles/pop!_os/tasks/main.yml
-    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
-  
   - name: install terminal packages
     package:
       name:
@@ -60,6 +49,17 @@
         - zsh
         - dbus-x11
       state: present
+
+  - name: Load Fedora tasks if ansible distribution is Fedora
+    import_tasks: roles/fedora/tasks/main.yml
+    when: ansible_distribution in ["Fedora"]
+
+  - name: Load Pop!_OS tasks if ansible distribution is Pop!_OS
+    import_tasks: roles/pop!_os/tasks/main.yml
+    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+
+  - name: Load Base Tasks
+    import_tasks: roles/base/tasks/main.yml
 
 #  - name: copy settings.dconf
 #    become_user: cjwade
@@ -76,131 +76,9 @@
     args:
       executable: /bin/bash
 
-  - name: Install zsh-syntax-highlighting from GitHub
-    become_user: cjwade
-    ansible.builtin.git:
-      repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-      dest: /home/cjwade/.zsh/zsh-syntax-highlighting
-      clone: yes
-      update: yes
 
-  - name: Install zsh-syntax-highlighting from GitHub
-    become_user: cjwade
-    ansible.builtin.git:
-      repo: https://github.com/zsh-users/zsh-autosuggestions
-      dest: /home/cjwade/.zsh/zsh-autosuggestions
-      clone: yes
-      update: yes
 
-  - name: install graphical packages
-    package:
-      name:
-        - kitty
-        - syncthing
-        - steam
-        - stacer
-        - code
-        - cura
-        - gnome-tweaks
-        - vlc
-        - flameshot
-      state: present
-    ignore_errors: yes
 
-  - name: install libreoffice packages
-    package:
-      name: libreoffice
-      state: present
-    ignore_errors: yes
-
-  - name: install nautilus add-in packages (nautilus-image-converter & gnome-sushi)
-    package:
-      name:
-        - nautilus-image-converter
-        - gnome-sushi
-      state: present
-    ignore_errors: yes
-
-  - name: Ensure fonts directory
-    become_user: cjwade
-    file:
-      path: "/home/$USER/.local/share/fonts"
-      state: directory
-
-  - name: Meslo exists
-    become_user: cjwade
-    shell: "ls /home/$USER/.local/share/fonts/Meslo*"
-    register: meslo_exists
-    ignore_errors: yes
-
-  - name: Download Meslo
-    become_user: cjwade
-    when: meslo_exists is failed
-    ansible.builtin.unarchive:
-      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-      dest: "/home/$USER/.local/share/fonts"
-      remote_src: yes
-
-  - name: make directory ~/.config/kitty/
-    become_user: cjwade
-    ansible.builtin.shell: mkdir /home/$USER/.config/kitty/
-    ignore_errors: yes
-
-  - name: make directory ~/.config/MangoHud/
-    become_user: cjwade
-    ansible.builtin.shell: mkdir /home/$USER/.config/MangoHud/
-    ignore_errors: yes
-
-  - name: copy kitty.conf
-    become_user: cjwade
-    copy:
-      src: files/kitty.conf
-      dest: /home/$USER/.config/kitty/kitty.conf
-      owner: cjwade
-      group: cjwade
-
-  - name: copy MangoHud.conf
-    become_user: cjwade
-    copy:
-      src: files/MangoHud.conf
-      dest: /home/$USER/.config/MangoHud/MangoHud.conf
-      owner: cjwade
-      group: cjwade
-
-  - name: copy .zshrc file
-    become_user: cjwade
-    copy:
-      src: files/.zshrc
-      dest: /home/$USER/.zshrc
-      owner: cjwade
-      group: cjwade
-
-  - name: copy .p10k.zsh file
-    become_user: cjwade
-    copy:
-      src: files/.p10k.zsh
-      dest: /home/$USER/.p10k.zsh
-      owner: cjwade
-      group: cjwade
-      
-  - name: Install Flatpaks
-    include_role:
-      name: flatpaks
-
-  - name: Touch /home/$USER/.cache/zshhistory"
-    become_user: cjwade
-    ansible.builtin.file:
-      path: /home/$USER/.cache/zshhistory
-      state: touch
-
-  - name: Install powerlevel10k
-    become_user: cjwade
-    ansible.builtin.git:
-      repo: https://github.com/romkatv/powerlevel10k.git
-      dest: /home/cjwade/.zsh/powerlevel10k
-      clone: yes
-      update: yes
-      depth: 1
 
   - name: add ansible user
     user:
