@@ -45,9 +45,6 @@
     name: org.gimp.GIMP
     state: present
     method: system
-  when:
-    - org.gimp.GIMP is defined
-    - org.gimp.GIMP == true
 
 - name: Install org.inkscape.Inkscape as flatpak
   community.general.flatpak:
@@ -150,15 +147,9 @@
     name: org.libretro.RetroArch
     state: present
     method: system
-  when:
-    - libretro is defined
-    - libretro == true
 
 - name: Install net.davidotek.pupgui2 (protonup-qt) as flatpak
   community.general.flatpak:
     name: net.davidotek.pupgui2
     state: present
     method: system
-  when:
-    - net.davidotek.pupgui2 is defined
-    - net.davidotek.pupgui2 == true
