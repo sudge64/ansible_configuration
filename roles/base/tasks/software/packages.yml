@@ -11,6 +11,7 @@
       - python3-pip
       - zsh
       - dbus-x11
+      - cifs-utils
     state: present
     
 - name: install graphical packages
