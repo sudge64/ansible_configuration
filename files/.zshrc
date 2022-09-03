@@ -17,3 +17,4 @@ alias ll="ls -l"
 alias la="ls -a"
 alias ld="ls -ld"
 export PATH="$HOME/.poetry/bin:$PATH"
+export TERM=xterm-256color
