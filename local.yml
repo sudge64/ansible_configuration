@@ -6,7 +6,9 @@
   pre_tasks:
   - name: Update package manager "apt" cache
     tags: always
-    apt: update_cache=yes
+    apt: 
+      update_cache: yes
+      upgrade: 'yes'
     changed_when: false
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
