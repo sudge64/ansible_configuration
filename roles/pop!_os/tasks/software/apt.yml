@@ -1,3 +1,23 @@
 ---
 - name: Fix broken installs
   ansible.builtin.shell: apt --fix-broken install
+
+- name: youtube-music .deb package exists
+  become_user: cjwade
+  shell: "ls /home/$USER/Downloads/youtube-music*"
+  register: deb_exists
+  ignore_errors: yes
+
+- name: Download youtube-music .deb package
+  become_user: cjwade
+  when: deb_exists is failed
+  ansible.builtin.get_url:
+    url: https://github.com/th-ch/youtube-music/releases/download/v1.18.0/youtube-music_1.18.0_amd64.deb
+    dest: "/home/$USER/Downloads"
+    mode: '0440'
+
+- name: Install youtube-music .deb package
+  when: deb_exists is failed
+  ansible.builtin.shell: sudo dpkg -i youtube-music*.deb
+  args:
+    chdir: /home/$USER/Downloads/
