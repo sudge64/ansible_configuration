@@ -28,6 +28,12 @@
     state: present
     method: system
 
+- name: Install Obsidian as flatpak
+  community.general.flatpak:
+    name: md.obsidian.Obsidian
+    state: present
+    method: system
+
 - name: Install Audacity as flatpak
   community.general.flatpak:
     name: org.audacityteam.Audacity
