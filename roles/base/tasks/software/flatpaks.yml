@@ -34,6 +34,12 @@
     state: present
     method: system
 
+- name: Install MarkText as flatpak
+  community.general.flatpak:
+    name: com.github.marktext.marktext
+    state: present
+    method: system
+
 - name: Install Audacity as flatpak
   community.general.flatpak:
     name: org.audacityteam.Audacity
