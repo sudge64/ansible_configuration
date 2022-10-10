@@ -9,7 +9,7 @@
   ansible.builtin.dnf:
     name: flatpak
     state: present
-  when: ansible_distribution in ["Fedora"]
+  when: ansible_distribution in ["Fedora", "Nobara"]
 
 - name: flathub flatpak repo
   community.general.flatpak_remote:
@@ -20,7 +20,7 @@
 
 - name: flatpak flatpak repo dnf
   ansible.builtin.shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  when: ansible_distribution in ["Fedora"]
+  when: ansible_distribution in ["Fedora", "Nobara"]
 
 - name: Install Blender as flatpak
   community.general.flatpak:

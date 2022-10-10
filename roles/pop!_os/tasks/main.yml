@@ -1,3 +1,4 @@
 ---
 - block:
   - import_tasks: software/apt.yml
+    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]

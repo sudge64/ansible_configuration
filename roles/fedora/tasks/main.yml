@@ -1,3 +1,4 @@
 ---
 - block:
   - import_tasks: software/dnf.yml
+    when: ansible_distribution in ["Fedora", "Nobara"]
