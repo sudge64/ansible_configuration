@@ -26,6 +26,7 @@
       - gnome-tweaks
       - vlc
       - flameshot
+#      - protontricks
     state: present
   ignore_errors: yes
 
