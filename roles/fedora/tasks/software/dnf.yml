@@ -1,9 +1,11 @@
 ---
 - name: Enable RPM Fusion Repos
   ansible.builtin.shell: dnf install \ https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+  when: ansible_distribution in ["Fedora"]
 
 - name: Enable RPM Nonfree Repos
   ansible.builtin.shell: dnf install \ https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  when: ansible_distribution in ["Fedora"]
 
 #- name: Install the 'media codecs' package group
 #  ansible.builtin.dnf:

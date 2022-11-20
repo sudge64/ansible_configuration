@@ -159,3 +159,4 @@
     name: net.davidotek.pupgui2
     state: present
     method: system
+  when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS", "Fedora"]
