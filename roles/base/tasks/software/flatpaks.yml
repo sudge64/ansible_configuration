@@ -28,6 +28,12 @@
     state: present
     method: system
 
+- name: Install Cura as flatpak
+  community.general.flatpak:
+    name: com.ultimaker.cura
+    state: present
+    method: system
+
 - name: Install MarkText as flatpak
   community.general.flatpak:
     name: com.github.marktext.marktext
