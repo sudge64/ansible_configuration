@@ -28,6 +28,10 @@
     state: present
   ignore_errors: yes
 
+  - name: Install RUST via rustup
+    ansible.builtin.shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ignore_errors: yes
+
 - name: install libreoffice packages
   package:
     name: libreoffice
