@@ -16,28 +16,25 @@
 #    state: present
 #  when: ansible_distribution in ["Fedora"]
     
-- name: Group Upgrade with Multimedia
-  ansible.builtin.shell: sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel && sudo dnf install lame\* --exclude=lame-devel && dnf group upgrade --with-optional Multimedia
-  #when: ansible_distribution in ["Fedora"]
-  ignore_errors: yes
+#- name: Group Upgrade with Multimedia
+#  ansible.builtin.shell: sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel && sudo dnf install lame\* --exclude=lame-devel && dnf group upgrade --with-optional Multimedia
+#  #when: ansible_distribution in ["Fedora"]
+#  ignore_errors: yes
     
 - name: Install the 'Development tools' package group
   ansible.builtin.dnf:
     name: '@development tools'
     state: present
-  #when: ansible_distribution in ["Fedora"]
       
 - name: Install the '@virtualization' package group
   ansible.builtin.dnf:
     name: '@virtualization'
     state: present
-  #when: ansible_distribution in ["Fedora"]
     
 - name: Install the '@C development tools and libraries' package group
   ansible.builtin.dnf:
     name: '@c development tools and libraries'
     state: present
-  #when: ansible_distribution in ["Fedora"]
 
 - name: Install VS Code repo
   ansible.builtin.shell: sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && dnf check-update && sudo dnf install code
