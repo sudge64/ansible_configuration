@@ -43,7 +43,7 @@
 
   - name: Load Fedora tasks if ansible distribution is Fedora
     import_tasks: roles/fedora/tasks/main.yml
-    when: ansible_distribution in ["Fedora"]
+    when: ansible_distribution in ["Fedora", "Nobara"]
 
   - name: Load Pop!_OS tasks if ansible distribution is Pop!_OS
     import_tasks: roles/pop!_os/tasks/main.yml
