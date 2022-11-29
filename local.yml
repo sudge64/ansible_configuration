@@ -56,7 +56,16 @@
       dest: /home/$USER/settings.dconf
       owner: cjwade
       group: cjwade
-    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+    when: ansible_distribution in ["Pop!_OS"]
+
+  - name: copy nobara-dconf.txt
+    become_user: cjwade
+    copy:
+      src: files/nobara-dconf.txt
+      dest: /home/$USER/nobara-dconf.txt
+      owner: cjwade
+      group: cjwade
+    when: ansible_distribution in ["Nobara"]
 
 #  - name: Load dconf settings from settings.dconf
 #    become_user: cjwade
