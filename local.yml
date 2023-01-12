@@ -18,6 +18,8 @@
     changed_when: false
     when: ansible_distribution in ["Fedora"]
 
+username: cjwade
+
 #- hosts: all
 #  tags: base
 #  become: true
@@ -50,25 +52,25 @@
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
   - name: copy settings.dconf
-    become_user: cjwade
+    become_user: "{{ username }}"
     copy:
       src: files/settings.dconf
       dest: /home/$USER/settings.dconf
-      owner: cjwade
-      group: cjwade
+      owner: "{{ username }}"
+      group: "{{ username }}"
     when: ansible_distribution in ["Pop!_OS"]
 
   - name: copy nobara-dconf.txt
-    become_user: cjwade
+    become_user: "{{ username }}"
     copy:
       src: files/nobara-dconf.txt
       dest: /home/$USER/nobara-dconf.txt
-      owner: cjwade
-      group: cjwade
+      owner: "{{ username }}"
+      group: "{{ username }}"
     when: ansible_distribution in ["Nobara"]
 
 #  - name: Load dconf settings from settings.dconf
-#    become_user: cjwade
+#    become_user: "{{ username }}"
 #    ansible.builtin.shell: cd ~ && dconf load / < settings.dconf
 #    args:
 #      executable: /bin/bash
