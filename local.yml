@@ -18,7 +18,10 @@
     changed_when: false
     when: ansible_distribution in ["Fedora"]
 
-username: cjwade
+  - name: Set current user to variable
+    ansible.builtin.shell: "echo $USER"
+    environment: 
+      username: cjwade
 
 #- hosts: all
 #  tags: base
