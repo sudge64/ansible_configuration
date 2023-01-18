@@ -21,9 +21,9 @@
   - name: Set current user to variable
     ansible.builtin.shell: "echo $USER"
     register: echolocation
-  - debug: username="{{ echolocation.stdout }}"
-    environment: 
-      username: cjwade
+
+  - vars:
+    - username="{{ echolocation.stdout }}"
 
 #- hosts: all
 #  tags: base
