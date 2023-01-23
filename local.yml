@@ -2,6 +2,8 @@
 - hosts: localhost
   connection: local
   become: true
+  vars:
+    - username: cjwade
 
   pre_tasks:
   - name: Update package manager "apt" cache
@@ -18,12 +20,12 @@
     changed_when: false
     when: ansible_distribution in ["Fedora"]
 
-  - name: Set current user to variable
-    ansible.builtin.shell: "echo $USER"
-    register: echolocation
+#  - name: Set current user to variable
+#    ansible.builtin.shell: "echo $USER"
+#    register: echolocation
 
-  - vars:
-    - username="{{ echolocation.stdout }}"
+#  - vars:
+#    - username="{{ echolocation.stdout }}"
 
 #- hosts: all
 #  tags: base
