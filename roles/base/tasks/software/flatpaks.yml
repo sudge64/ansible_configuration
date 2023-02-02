@@ -34,9 +34,9 @@
     state: present
     method: system
 
-- name: Install MarkText as flatpak
+- name: Install Obsidian as flatpak
   community.general.flatpak:
-    name: com.github.marktext.marktext
+    name: md.obsidian.Obsidian
     state: present
     method: system
 
