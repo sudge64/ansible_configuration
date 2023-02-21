@@ -12,6 +12,8 @@
       - zsh
       - dbus-x11
       - cifs-utils
+      - rpcbind
+      - nfs-common
     state: present
     
 - name: install graphical packages
