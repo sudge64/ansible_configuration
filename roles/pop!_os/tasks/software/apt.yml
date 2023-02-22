@@ -16,6 +16,23 @@
     dest: "/home/$USER/Downloads"
     mode: '0440'
 
+- name: install neovim dependencies for Debian systems
+  package:
+    name:
+      - python3.10-venv
+      - ninja-build
+      - gettext
+      - libtool
+      - libtool-bin
+      - cmake
+      - g++
+      - pkg-config
+      - unzip
+      - curl
+      - doxygen
+    state: present
+  ignore_errors: yes
+
 - name: Install youtube-music .deb package
   when: deb_exists is failed
   ansible.builtin.shell: sudo dpkg -i youtube-music*.deb
