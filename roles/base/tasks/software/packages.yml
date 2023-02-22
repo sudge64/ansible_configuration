@@ -14,7 +14,6 @@
       - cifs-utils
       - rpcbind
       - nfs-common
-      - python3.10-venv
     state: present
     
 - name: install graphical packages
