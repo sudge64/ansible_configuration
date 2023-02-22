@@ -23,3 +23,11 @@
     clone: yes
     update: yes
     depth: 1
+
+- name: Clone neovim repo
+  become_user: cjwade
+  ansible.builtin.git:
+    repo: https://github.com/neovim/neovim
+    dest: /home/cjwade/Documents/GitHub
+    clone: yes
+    update: yes
