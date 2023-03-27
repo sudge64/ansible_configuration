@@ -15,6 +15,7 @@
       - rpcbind
       - nfs-common
     state: present
+  ignore_errors: yes
     
 - name: install graphical packages
   package:
