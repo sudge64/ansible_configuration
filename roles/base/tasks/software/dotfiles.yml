@@ -44,6 +44,7 @@
     dest: /home/$USER/.config/MangoHud/MangoHud.conf
     owner: cjwade
     group: cjwade
+  ignore_errors: yes
 
 - name: copy .zshrc file
   become_user: cjwade
