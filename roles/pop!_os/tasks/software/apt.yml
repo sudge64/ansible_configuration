@@ -2,6 +2,22 @@
 - name: Fix broken installs
   ansible.builtin.shell: apt --fix-broken install
 
+- name: Install VS Codium Repo
+  ansible.builtin.shell: wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg && echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+
+- name: Update package manager "apt" cache
+  tags: always
+  apt: 
+    update_cache: yes
+    upgrade: 'yes'
+  changed_when: false
+  when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+
+- name: Install VS Codium
+  package: codium
+  state: present
+  ignore_errors: yes
+
 - name: youtube-music .deb package exists
   become_user: cjwade
   shell: "ls /home/$USER/Downloads/youtube-music*"
