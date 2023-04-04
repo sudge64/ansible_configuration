@@ -29,6 +29,11 @@
   ansible.builtin.shell: mkdir /home/$USER/.config/MangoHud/
   ignore_errors: yes
 
+- name: make directory ~/.config/nvim/
+  become_user: cjwade
+  ansible.builtin.shell: mkdir /home/$USER/.config/nvim/
+  ignore_errors: yes
+
 - name: copy kitty.conf
   become_user: cjwade
   copy:
@@ -51,6 +56,14 @@
   copy:
     src: files/.zshrc
     dest: /home/$USER/.zshrc
+    owner: cjwade
+    group: cjwade
+
+- name: copy init.lua file
+  become_user: cjwade
+  copy:
+    src: files/init.lua
+    dest: /home/$USER/.config/nvim/init.lua
     owner: cjwade
     group: cjwade
 
