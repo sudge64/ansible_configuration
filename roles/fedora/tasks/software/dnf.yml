@@ -36,6 +36,11 @@
     name: '@c development tools and libraries'
     state: present
 
+- name: Install util-linux-user for `chsh`
+  ansible.builtin.dnf:
+    name: util-linux-user
+    state: present
+
 - name: install neovim dependencies for Debian systems
   package:
     name:
