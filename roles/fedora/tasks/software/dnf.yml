@@ -64,8 +64,3 @@
   tags: always
   dnf: update_cache=yes
   changed_when: false
-
-- name: Install VS Codium
-  package: codium
-  state: present
-  ignore_errors: yes
