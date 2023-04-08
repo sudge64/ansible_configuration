@@ -13,11 +13,6 @@
   changed_when: false
   when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
 
-- name: Install VS Codium
-  package: codium
-  state: present
-  ignore_errors: yes
-
 - name: youtube-music .deb package exists
   become_user: cjwade
   shell: "ls /home/$USER/Downloads/youtube-music*"
