@@ -4,5 +4,4 @@
   - import_tasks: software/dotfiles.yml
   - import_tasks: software/github.yml
   - import_tasks: software/flatpaks.yml
-  - import_tasks: software/mangohud.yml
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS", "Fedora", "Nobara"]
