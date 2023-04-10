@@ -1,4 +1,5 @@
 ---
 - block:
   - import_tasks: software/apt.yml
+  - import_tasks: software/mangohud.yml
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
