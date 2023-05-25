@@ -1,82 +1,59 @@
-[ca/desrt/dconf-editor]
-saved-pathbar-path='/'
-saved-view='/'
-window-height=500
-window-is-maximized=false
-window-width=540
-
-[com/mattjakeman/ExtensionManager]
-last-used-version='0.3.1'
-
-[org/gnome/Totem]
-active-plugins=['vimeo', 'variable-rate', 'skipto', 'screenshot', 'screensaver', 'save-file', 'rotation', 'recent', 'movie-properties', 'open-directory', 'mpris', 'autoload-subtitles', 'apple-trailers']
-subtitle-encoding='UTF-8'
+[dk/yumex/Yumex]
+col-arch-width=100
+col-description-width=250
+col-name-width=200
+col-repo-width=100
+col-size-width=100
+col-version-width=100
+pkg-paned-pos=606
+window-fullscreen=false
+window-height=700
+window-maximized=false
+window-width=1000
 
 [org/gnome/calculator]
 accuracy=9
 angle-units='degrees'
 base=10
-button-mode='advanced'
+button-mode='basic'
 number-format='automatic'
 show-thousands=false
 show-zeroes=false
-source-currency='DZD'
+source-currency=''
 source-units='degree'
-target-currency='DZD'
+target-currency=''
 target-units='radian'
 word-size=64
 
 [org/gnome/control-center]
-last-panel='user-accounts'
+last-panel='info-overview'
 window-state=(980, 640, false)
 
 [org/gnome/desktop/app-folders]
-folder-children=['Utilities', 'YaST', '352b8e85-27ae-4922-9c0f-194448e6e369', '42fd1898-3a46-457e-9ac1-9ec685d546e2', '2600810c-8f90-44d8-903c-af40df93ebe6', '32588f56-c52a-4738-bcbc-53b2392f5307', '78479e40-d3da-43a7-9bc0-8b0f459c6f7d', '92281368-1a7f-4790-b199-45a0374322f0', '460833ef-13df-4485-9298-7c53a1425624', '54b7172c-eb80-4fd9-83ef-de1191af97bd', '1bc60b06-7c42-4d58-b656-6b2d4f9259d1']
+folder-children=['Utilities', 'YaST', 'c55538d2-2eca-4b04-9c66-9bae607f559f', '56b4a685-7607-4e4f-8e80-e2cac78db14a', 'b011336b-12aa-41ba-8fe5-0fa946f83464', '16dea412-0dd8-4f2a-8a9f-58cc3ea46783', 'a0ebbed5-6ea7-4e92-984e-d31a25521b72', 'e58e60fa-5894-4bfa-9f64-8b4d8e07f659', '007b0bdf-3405-43ec-b8f3-bc578354fe49', '6cacd9ee-4914-4a63-a655-c50c21fe2fe1']
 
-[org/gnome/desktop/app-folders/folders/1bc60b06-7c42-4d58-b656-6b2d4f9259d1]
-apps=['org.freecadweb.FreeCAD.desktop', 'com.ultimaker.cura.desktop', 'org.openscad.OpenSCAD.desktop']
-name='CAD'
+[org/gnome/desktop/app-folders/folders/007b0bdf-3405-43ec-b8f3-bc578354fe49]
+apps=['org.audacityteam.Audacity.desktop', 'org.freac.freac.desktop', 'org.gimp.GIMP.desktop', 'fr.handbrake.ghb.desktop', 'com.orama_interactive.Pixelorama.desktop', 'org.inkscape.Inkscape.desktop', 'org.kde.krita.desktop']
+name='Sound & Video'
 translate=false
 
-[org/gnome/desktop/app-folders/folders/2600810c-8f90-44d8-903c-af40df93ebe6]
-apps=['libreoffice-base.desktop', 'libreoffice-calc.desktop', 'libreoffice-draw.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'libreoffice-writer.desktop']
-name='Office'
-
-[org/gnome/desktop/app-folders/folders/32588f56-c52a-4738-bcbc-53b2392f5307]
-apps=['org.kicad.KiCad.desktop', 'org.kicad.KiCad.gerbview.desktop', 'org.kicad.KiCad.bitmap2component.desktop', 'org.kicad.KiCad.pcbcalculator.desktop', 'org.kicad.KiCad.pcbnew.desktop', 'org.kicad.KiCad.eeschema.desktop']
-name='KiCad'
-translate=false
-
-[org/gnome/desktop/app-folders/folders/352b8e85-27ae-4922-9c0f-194448e6e369]
-apps=['org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Cheese.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Contacts.desktop', 'simple-scan.desktop', 'org.gnome.gedit.desktop', 'yelp.desktop', 'system-config-language.desktop', 'org.gnome.Maps.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Rhythmbox3.desktop', 'pavucontrol.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Totem.desktop', 'org.gnome.Weather.desktop']
+[org/gnome/desktop/app-folders/folders/16dea412-0dd8-4f2a-8a9f-58cc3ea46783]
+apps=['org.gnome.Contacts.desktop', 'org.gnome.Weather.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Maps.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Totem.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.gedit.desktop', 'simple-scan.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Terminal.desktop', 'yelp.desktop', 'org.gnome.Cheese.desktop', 'ca.desrt.dconf-editor.desktop', 'pavucontrol.desktop', 'org.gnome.Rhythmbox3.desktop', 'remote-viewer.desktop', 'system-config-language.desktop']
 name='GNOME'
 translate=false
 
-[org/gnome/desktop/app-folders/folders/42fd1898-3a46-457e-9ac1-9ec685d546e2]
-apps=['blender.desktop', 'discord.desktop', 'org.kde.kdenlive.desktop', 'com.obsproject.Studio.desktop', 'nobara-sync.desktop', 'webapp-manager.desktop', 'nobara-welcome.desktop', 'winetricks.desktop', 'onlyoffice-desktopeditors.desktop', 'OpenRGB.desktop', 'OpenTabletDriver.desktop', 'qt5ct.desktop', 'nobara-gnome-layouts.desktop']
+[org/gnome/desktop/app-folders/folders/56b4a685-7607-4e4f-8e80-e2cac78db14a]
+apps=['org.kicad.KiCad.desktop', 'org.kicad.KiCad.gerbview.desktop', 'org.kicad.KiCad.bitmap2component.desktop', 'org.kicad.KiCad.pcbcalculator.desktop', 'org.kicad.KiCad.pcbnew.desktop', 'org.kicad.KiCad.eeschema.desktop']
+name='KiCAD'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/6cacd9ee-4914-4a63-a655-c50c21fe2fe1]
+apps=['blender.desktop', 'com.obsproject.Studio.desktop', 'OpenRGB.desktop', 'net.davidotek.pupgui2.desktop', 'nobara-nvidia-wizard.desktop', 'io.github.benjamimgois.goverlay.desktop', 'net.lutris.Lutris.desktop', 'org.fedoraproject.MediaWriter.desktop', 'nobara-gnome-layouts.desktop', 'onlyoffice-desktopeditors.desktop', 'OpenTabletDriver.desktop', 'qt5ct.desktop', 'timeshift-gtk.desktop', 'gnome-session-properties.desktop', 'nobara-sync.desktop', 'webapp-manager.desktop', 'nobara-welcome.desktop', 'winetricks.desktop']
 name='Nobara'
 translate=false
 
-[org/gnome/desktop/app-folders/folders/460833ef-13df-4485-9298-7c53a1425624]
-apps=['code.desktop']
-name='Programming'
-
-[org/gnome/desktop/app-folders/folders/54b7172c-eb80-4fd9-83ef-de1191af97bd]
-apps=['org.audacityteam.Audacity.desktop', 'org.freac.freac.desktop', 'org.gimp.GIMP.desktop', 'fr.handbrake.ghb.desktop', 'org.inkscape.Inkscape.desktop', 'org.kde.krita.desktop', 'com.orama_interactive.Pixelorama.desktop']
-name='Sound & Video'
-
-[org/gnome/desktop/app-folders/folders/78479e40-d3da-43a7-9bc0-8b0f459c6f7d]
-apps=['lpf.desktop', 'lpf-xone-firmware.desktop', 'lpf-gui.desktop', 'lpf-notify.desktop', 'cgnscalc.desktop', 'cgnsnodes.desktop', 'cgnsplot.desktop', 'unitconv.desktop', 'cgnsview.desktop']
-name='misc'
-translate=false
-
-[org/gnome/desktop/app-folders/folders/92281368-1a7f-4790-b199-45a0374322f0]
-apps=['org.citra_emu.citra.desktop', 'org.DolphinEmu.dolphin-emu.desktop', 'io.github.benjamimgois.goverlay.desktop', 'net.lutris.Lutris.desktop', 'nvidia-settings.desktop', 'net.pcsx2.PCSX2.desktop', 'net.pcsx2.PCSX2.Qt.desktop', 'net.davidotek.pupgui2.desktop', 'org.libretro.RetroArch.desktop']
-name='Funtimes'
-translate=false
-
 [org/gnome/desktop/app-folders/folders/Utilities]
-apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop', 'org.fedoraproject.MediaWriter.desktop', 'nvtop.desktop']
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
 categories=['X-GNOME-Utilities']
 name='X-GNOME-Utilities.directory'
 translate=true
@@ -86,13 +63,27 @@ categories=['X-SuSE-YaST']
 name='suse-yast.directory'
 translate=true
 
-[org/gnome/desktop/background]
-color-shading-type='solid'
-picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/gnome/adwaita-l.jpg'
-picture-uri-dark='file:///usr/share/backgrounds/gnome/adwaita-d.jpg'
-primary-color='#3465a4'
-secondary-color='#000000'
+[org/gnome/desktop/app-folders/folders/a0ebbed5-6ea7-4e92-984e-d31a25521b72]
+apps=['libreoffice-base.desktop', 'libreoffice-calc.desktop', 'libreoffice-draw.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'libreoffice-writer.desktop']
+name='Office'
+
+[org/gnome/desktop/app-folders/folders/b011336b-12aa-41ba-8fe5-0fa946f83464]
+apps=['org.freecadweb.FreeCAD.desktop', 'org.openscad.OpenSCAD.desktop', 'com.ultimaker.cura.desktop']
+name='CAD'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/c55538d2-2eca-4b04-9c66-9bae607f559f]
+apps=['org.citra_emu.citra.desktop', 'org.DolphinEmu.dolphin-emu.desktop', 'net.pcsx2.PCSX2.desktop', 'org.libretro.RetroArch.desktop']
+name='Funtimes'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/e58e60fa-5894-4bfa-9f64-8b4d8e07f659]
+apps=['cgnscalc.desktop', 'cgnsnodes.desktop', 'cgnsplot.desktop', 'unitconv.desktop', 'cgnsview.desktop', 'lpf.desktop', 'lpf-xone-firmware.desktop', 'lpf-gui.desktop', 'lpf-notify.desktop']
+name='Sundries'
+translate=false
+
+[org/gnome/desktop/calendar]
+show-weekdate=true
 
 [org/gnome/desktop/input-sources]
 sources=[('xkb', 'us')]
@@ -100,120 +91,52 @@ xkb-options=@as []
 
 [org/gnome/desktop/interface]
 clock-show-weekday=true
-enable-animations=true
 font-antialiasing='grayscale'
 font-hinting='slight'
-icon-theme='Papirus-Dark'
 
 [org/gnome/desktop/notifications]
-application-children=['org-freedesktop-problems-applet', 'org-gnome-terminal', 'firefox', 'org-gnome-software', 'gnome-printers-panel', 'org-gnome-characters', 'libreoffice-writer', 'org-mozilla-thunderbird', 'org-gnome-totem', 'org-gnome-nautilus', 'org-gnome-gedit', 'code', 'org-freac-freac', 'kitty']
+application-children=['org-gnome-terminal', 'org-gnome-nautilus', 'firefox']
 show-banners=false
-
-[org/gnome/desktop/notifications/application/code]
-application-id='code.desktop'
 
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
 
-[org/gnome/desktop/notifications/application/gnome-printers-panel]
-application-id='gnome-printers-panel.desktop'
-
-[org/gnome/desktop/notifications/application/kitty]
-application-id='kitty.desktop'
-
-[org/gnome/desktop/notifications/application/libreoffice-writer]
-application-id='libreoffice-writer.desktop'
-
-[org/gnome/desktop/notifications/application/org-freac-freac]
-application-id='org.freac.freac.desktop'
-
-[org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
-application-id='org.freedesktop.problems.applet.desktop'
-
-[org/gnome/desktop/notifications/application/org-gnome-characters]
-application-id='org.gnome.Characters.desktop'
-
-[org/gnome/desktop/notifications/application/org-gnome-gedit]
-application-id='org.gnome.gedit.desktop'
-
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
-
-[org/gnome/desktop/notifications/application/org-gnome-software]
-application-id='org.gnome.Software.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-terminal]
 application-id='org.gnome.Terminal.desktop'
 
-[org/gnome/desktop/notifications/application/org-gnome-totem]
-application-id='org.gnome.Totem.desktop'
-
-[org/gnome/desktop/notifications/application/org-mozilla-thunderbird]
-application-id='org.mozilla.Thunderbird.desktop'
-
-[org/gnome/desktop/peripherals/mouse]
-accel-profile='flat'
-
 [org/gnome/desktop/peripherals/touchpad]
 two-finger-scrolling-enabled=true
 
-[org/gnome/desktop/screensaver]
-color-shading-type='solid'
-picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/gnome/adwaita-l.jpg'
-primary-color='#3465a4'
-secondary-color='#000000'
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/session]
 idle-delay=uint32 900
 
-[org/gnome/eog/view]
-background-color='rgb(0,0,0)'
-use-background-color=true
-
-[org/gnome/evince/default]
-window-ratio=(2.0915032679738563, 1.672979797979798)
+[org/gnome/desktop/sound]
+event-sounds=true
+theme-name='__custom'
 
 [org/gnome/evolution-data-server]
 migrated=true
-network-monitor-gio-name=''
-
-[org/gnome/gedit/plugins]
-active-plugins=['spell', 'sort', 'openlinks', 'modelines', 'filebrowser', 'docinfo']
-
-[org/gnome/gedit/plugins/filebrowser]
-root='file:///'
-tree-view=true
-virtual-root='file:///home/cjwade/Downloads'
-
-[org/gnome/gedit/preferences/editor]
-scheme='solarized-dark'
-wrap-last-split-mode='word'
-
-[org/gnome/gedit/preferences/ui]
-show-tabs-mode='auto'
-
-[org/gnome/gedit/state/window]
-bottom-panel-size=140
-side-panel-active-page='GeditWindowDocumentsPanel'
-side-panel-size=200
-size=(1280, 1361)
-state=87168
 
 [org/gnome/gnome-system-monitor]
-current-tab='processes'
+current-tab='resources'
 maximized=false
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(811, 711, 35, 32)
+window-state=(886, 713, 35, 32)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
 col-6-width=0
 
 [org/gnome/login-screen]
-enable-fingerprint-authentication=true
+enable-fingerprint-authentication=false
 enable-password-authentication=true
 enable-smartcard-authentication=false
 
@@ -221,26 +144,27 @@ enable-smartcard-authentication=false
 experimental-features=['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']
 overlay-key='Super_L'
 
-[org/gnome/nautilus/compression]
-default-compression-format='zip'
-
-[org/gnome/nautilus/icon-view]
-default-zoom-level='standard'
-
-[org/gnome/nautilus/list-view]
-use-tree-view=true
-
 [org/gnome/nautilus/preferences]
-default-folder-viewer='icon-view'
+default-folder-viewer='list-view'
+migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
 [org/gnome/nautilus/window-state]
-initial-size=(1063, 882)
-maximized=false
+initial-size=(890, 550)
+
+[org/gnome/portal/filechooser/md.obsidian.Obsidian]
+last-folder-path='/run/media/cjwade/Sandisk2TB/myDocuments/Documents/1_Tarleton/11th Semester Tarleton'
+
+[org/gnome/portal/filechooser/org.DolphinEmu.dolphin-emu]
+last-folder-path='/run/media/cjwade/Sandisk2TB/myDocuments/Documents/Funtimes/Internet Archive/Nintendo Wii'
+
+[org/gnome/portal/filechooser/org.citra_emu.citra]
+last-folder-path='/run/media/cjwade/Sandisk2TB/myDocuments/Documents/Funtimes/Internet Archive/Nintendo 3DS/Decrypted'
 
 [org/gnome/settings-daemon/plugins/media-keys]
+calculator=['<Super>c']
+control-center=['<Super>s']
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
-email=@as []
 home=['<Super>e']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
@@ -249,41 +173,36 @@ command='kitty'
 name='kitty'
 
 [org/gnome/settings-daemon/plugins/power]
-power-button-action='suspend'
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
 
 [org/gnome/shell]
-app-picker-layout=[{'352b8e85-27ae-4922-9c0f-194448e6e369': <{'position': <0>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <1>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <2>}>, 'gnome-system-monitor.desktop': <{'position': <3>}>, 'Utilities': <{'position': <4>}>, 'syncthing-start.desktop': <{'position': <5>}>, 'syncthing-ui.desktop': <{'position': <6>}>, '42fd1898-3a46-457e-9ac1-9ec685d546e2': <{'position': <7>}>, 'gnome-session-properties.desktop': <{'position': <8>}>, 'steam.desktop': <{'position': <9>}>, 'htop.desktop': <{'position': <10>}>, 'com.github.marktext.marktext.desktop': <{'position': <11>}>, '78479e40-d3da-43a7-9bc0-8b0f459c6f7d': <{'position': <12>}>, '2600810c-8f90-44d8-903c-af40df93ebe6': <{'position': <13>}>, '54b7172c-eb80-4fd9-83ef-de1191af97bd': <{'position': <14>}>, 'com.usebottles.bottles.desktop': <{'position': <15>}>, 'com.github.tchx84.Flatseal.desktop': <{'position': <16>}>, 'org.godotengine.Godot.desktop': <{'position': <17>}>, '1bc60b06-7c42-4d58-b656-6b2d4f9259d1': <{'position': <18>}>, '32588f56-c52a-4738-bcbc-53b2392f5307': <{'position': <19>}>, '92281368-1a7f-4790-b199-45a0374322f0': <{'position': <20>}>, 'remote-viewer.desktop': <{'position': <21>}>}]
-disable-user-extensions=false
-disabled-extensions=['auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'background-logo@fedorahosted.org', 'clipboard-history@alexsaveau.dev', 'dash-to-dock@micxgx.gmail.com', 'dash-to-panel@jderose9.github.com', 'gsconnect@andyholmes.github.io', 'just-perfection-desktop@just-perfection', 'openweather-extension@jenslody.de', 'volume-mixer@evermiss.net', 'window-list@gnome-shell-extensions.gcampax.github.com', 'wireless-hid@chlumskyvaclav.gmail.com', 'supergfxctl-gex@asus-linux.org']
-enabled-extensions=['sound-output-device-chooser@kgshank.net', 'caffeine@patapon.info', 'scroll-workspaces@gfxmonk.net', 'Vitals@CoreCoding.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'CoverflowAltTab@palatis.blogspot.com']
-favorite-apps=['kitty.desktop', 'org.gnome.Nautilus.desktop', 'firefox.desktop', 'vlc.desktop', 'code.desktop', 'org.mozilla.Thunderbird.desktop', 'virt-manager.desktop', 'org.gnome.Settings.desktop', 'org.gnome.Software.desktop', 'yumex-dnf.desktop']
-welcome-dialog-last-shown-version='42.3.1'
+app-picker-layout=[{'com.usebottles.bottles.desktop': <{'position': <0>}>, 'b011336b-12aa-41ba-8fe5-0fa946f83464': <{'position': <1>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <2>}>, 'org.flameshot.Flameshot.desktop': <{'position': <3>}>, 'com.github.tchx84.Flatseal.desktop': <{'position': <4>}>, 'c55538d2-2eca-4b04-9c66-9bae607f559f': <{'position': <5>}>, '16dea412-0dd8-4f2a-8a9f-58cc3ea46783': <{'position': <6>}>, 'org.godotengine.Godot.desktop': <{'position': <7>}>, 'htop.desktop': <{'position': <8>}>, '56b4a685-7607-4e4f-8e80-e2cac78db14a': <{'position': <9>}>, 'nvim.desktop': <{'position': <10>}>, '6cacd9ee-4914-4a63-a655-c50c21fe2fe1': <{'position': <11>}>, 'md.obsidian.Obsidian.desktop': <{'position': <12>}>, 'a0ebbed5-6ea7-4e92-984e-d31a25521b72': <{'position': <13>}>, '007b0bdf-3405-43ec-b8f3-bc578354fe49': <{'position': <14>}>, 'e58e60fa-5894-4bfa-9f64-8b4d8e07f659': <{'position': <15>}>, 'stacer.desktop': <{'position': <16>}>, 'syncthing-start.desktop': <{'position': <17>}>, 'syncthing-ui.desktop': <{'position': <18>}>, 'Utilities': <{'position': <19>}>, 'virt-manager.desktop': <{'position': <20>}>}]
+disabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'dash-to-dock@micxgx.gmail.com', 'window-list@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['background-logo@fedorahosted.org', 'scroll-workspaces@gfxmonk.net', 'Vitals@CoreCoding.com', 'CoverflowAltTab@palatis.blogspot.com', 'caffeine@patapon.info', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'gamemode@christian.kellner.me']
+favorite-apps=['kitty.desktop', 'org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.mozilla.Thunderbird.desktop', 'vlc.desktop', 'codium.desktop', 'steam.desktop', 'discord.desktop', 'nvidia-settings.desktop', 'org.gnome.Settings.desktop', 'yumex-dnf.desktop', 'org.gnome.Software.desktop']
+last-selected-power-profile='power-saver'
+welcome-dialog-last-shown-version='43.2'
 
 [org/gnome/shell/extensions/arcmenu]
-menu-hotkey='Super_L'
-pinned-app-list=['Firefox', '', 'firefox.desktop', 'Files', '', 'org.gnome.Nautilus.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'ArcMenu Settings', 'ArcMenu_ArcMenuIcon', 'gnome-extensions prefs arcmenu@arcmenu.com']
+pinned-app-list=['Update System', '', 'nobara-sync.desktop', 'Firefox', '', 'firefox.desktop', 'Files', '', 'org.gnome.Nautilus.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'ArcMenu Settings', 'ArcMenu_ArcMenuIcon', 'gnome-extensions prefs arcmenu@arcmenu.com']
 
 [org/gnome/shell/extensions/caffeine]
-user-enabled=true
-
-[org/gnome/shell/extensions/dash-to-panel]
-available-monitors=[0]
+indicator-position-max=1
 
 [org/gnome/shell/extensions/vitals]
 hot-sensors=['__temperature_avg__', '__network-rx_max__', '__network-tx_max__', '_processor_usage_', '_memory_usage_']
 use-higher-precision=true
 
+[org/gnome/shell/keybindings]
+toggle-overview=@as []
+
 [org/gnome/shell/world-clocks]
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1669650206
+check-timestamp=int64 1684945628
 first-run=false
-install-timestamp=int64 1669050202
-online-updates-timestamp=int64 1669650231
-update-notification-timestamp=int64 1669650231
 
 [org/gnome/tweaks]
 show-extensions-notice=false
@@ -291,15 +210,15 @@ show-extensions-notice=false
 [org/gtk/gtk4/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
-show-hidden=false
+show-hidden=true
 show-size-column=true
 show-type-column=true
 sidebar-width=169
 sort-column='name'
-sort-directories-first=false
+sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-size=(888, 327)
+window-size=(888, 374)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
@@ -309,41 +228,14 @@ show-size-column=true
 show-type-column=true
 sidebar-width=165
 sort-column='name'
-sort-directories-first=true
+sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(35, 32)
-window-size=(1203, 902)
-
-[org/nobara/layouts]
-layout-num=3
+window-position=(665, 226)
+window-size=(1231, 974)
 
 [org/nobara/welcome]
 startup-show=false
-
-[org/virt-manager/virt-manager]
-manager-window-height=550
-manager-window-width=550
-xmleditor-enabled=true
-
-[org/virt-manager/virt-manager/connections]
-autoconnect=['qemu:///system']
-uris=['qemu:///system']
-
-[org/virt-manager/virt-manager/details]
-show-toolbar=true
-
-[org/virt-manager/virt-manager/new-vm]
-graphics-type='system'
-
-[org/virt-manager/virt-manager/vmlist-fields]
-disk-usage=false
-network-traffic=false
-
-[org/virt-manager/virt-manager/vms/566e71c9b1c5484796488f8bfaad61ed]
-autoconnect=1
-scaling=1
-vm-window-size=(2560, 1371)
 
 [system/proxy]
 mode='none'
