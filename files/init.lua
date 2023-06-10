@@ -63,6 +63,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -112,13 +113,13 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
+--  { -- Theme inspired by Atom
+--    'navarasu/onedark.nvim',
+--    priority = 1000,
+--    config = function()
+--      vim.cmd.colorscheme 'onedark'
+--    end,
+--  },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -172,6 +173,9 @@ require('lazy').setup({
     end,
   },
 
+  -- Custom addition, catppuccin color scheme
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -191,6 +195,9 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- Custom addition, catppuccin
+vim.cmd.colorscheme "catppuccin-macchiato"
 
 -- Set highlight on search
 vim.o.hlsearch = false
