@@ -21,7 +21,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Aliases
 ## Updates
 alias updateD="sudo apt update -y && sudo apt upgrade -y && flatpak update -y"
-alias updateF="sudo dnf upgrade -y && flatpak update -y"
+alias upgradeF="sudo dnf upgrade -y && flatpak update -y"
 alias updateA="sudo pacman -Syu -y && flatpak update -y"
 alias updateM="brew update && brew upgrade"
 ## Shortcuts
