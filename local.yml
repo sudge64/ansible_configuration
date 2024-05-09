@@ -20,6 +20,14 @@
     changed_when: false
     when: ansible_distribution in ["Fedora"]
 
+  - name: Update package manager "pacman" cache
+    tags: always
+    pacman: 
+      update_cache: yes
+      upgrade: 'yes'
+    changed_when: false
+    when: ansible_distribution in ["ArchLinux"]
+
 #  - name: Set current user to variable
 #    ansible.builtin.shell: "echo $USER"
 #    register: echolocation
@@ -57,6 +65,10 @@
   - name: Load Pop!_OS tasks if ansible distribution is Pop!_OS
     import_tasks: roles/pop!_os/tasks/main.yml
     when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+
+  - name: Load Arch tasks if ansible distribution is Arch
+    import_tasks: roles/pop!_os/tasks/main.yml
+    when: ansible_distribution in ["ArchLinux"]
 
   - name: copy settings.dconf
     become_user: "{{ username }}"

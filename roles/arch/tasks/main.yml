@@ -1,0 +1,4 @@
+---
+- block:
+  - import_tasks: software/pacman.yml
+    when: ansible_distribution in ["ArchLinux"]

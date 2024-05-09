@@ -1,0 +1,51 @@
+---
+- name: Fix broken installs
+  ansible.builtin.shell: apt --fix-broken install
+
+- name: Install VS Codium Repo
+  ansible.builtin.shell: wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg && echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+
+- name: Update package manager "apt" cache
+  tags: always
+  apt: 
+    update_cache: yes
+    upgrade: 'yes'
+  changed_when: false
+  when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+
+- name: youtube-music .deb package exists
+  become_user: cjwade
+  shell: "ls /home/$USER/Downloads/youtube-music*"
+  register: deb_exists
+  ignore_errors: yes
+
+- name: Download youtube-music .deb package
+  become_user: cjwade
+  when: deb_exists is failed
+  ansible.builtin.get_url:
+    url: https://github.com/th-ch/youtube-music/releases/download/v1.18.0/youtube-music_1.18.0_amd64.deb
+    dest: "/home/$USER/Downloads"
+    mode: '0440'
+
+- name: install neovim dependencies for Debian systems
+  package:
+    name:
+      - python3.10-venv
+      - ninja-build
+      - gettext
+      - libtool
+      - libtool-bin
+      - cmake
+      - g++
+      - pkg-config
+      - unzip
+      - curl
+      - doxygen
+    state: present
+  ignore_errors: yes
+
+- name: Install youtube-music .deb package
+  when: deb_exists is failed
+  ansible.builtin.shell: sudo dpkg -i youtube-music*.deb
+  args:
+    chdir: /home/$USER/Downloads/

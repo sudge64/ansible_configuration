@@ -4,4 +4,4 @@
   - import_tasks: software/dotfiles.yml
   - import_tasks: software/github.yml
   - import_tasks: software/flatpaks.yml
-    when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS", "Fedora", "Nobara"]
+    when: ansible_distribution in ["ArchLinux", "Debian", "Ubuntu", "Pop!_OS", "Fedora", "Nobara"]
